@@ -6,12 +6,20 @@
         <description>Recent content in Categories on 우명규</description>
         <generator>Hugo -- gohugo.io</generator>
         <lastBuildDate>Mon, 17 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://myeongcode.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>App</title>
+        <link>https://myeongcode.github.io/categories/app/</link>
+        <pubDate>Mon, 17 Apr 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://myeongcode.github.io/categories/app/</guid>
+        <description>&lt;img src="https://myeongcode.github.io/categories/app/app-icon.png" alt="Featured image of post App" /&gt;</description>
+        </item>
+        <item>
         <title>Blog</title>
         <link>https://myeongcode.github.io/categories/blog/</link>
         <pubDate>Mon, 17 Apr 2023 00:00:00 +0000</pubDate>
         
         <guid>https://myeongcode.github.io/categories/blog/</guid>
-        <description>&lt;img src="https://myeongcode.github.io/categories/blog/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Blog" /&gt;</description>
+        <description>&lt;img src="https://myeongcode.github.io/categories/blog/github-icon.png" alt="Featured image of post Blog" /&gt;</description>
         </item>
         <item>
         <title>Markdown</title>
@@ -19,7 +27,31 @@
         <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
         
         <guid>https://myeongcode.github.io/categories/markdown/</guid>
+        <description>&lt;img src="https://myeongcode.github.io/categories/markdown/markdown.png" alt="Featured image of post Markdown" /&gt;</description>
+        </item>
+        <item>
+        <title>Baekjoon</title>
+        <link>https://myeongcode.github.io/categories/baekjoon/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://myeongcode.github.io/categories/baekjoon/</guid>
+        <description>&lt;img src="https://myeongcode.github.io/categories/baekjoon/baekjoon.png" alt="Featured image of post Baekjoon" /&gt;</description>
+        </item>
+        <item>
+        <title>Daily</title>
+        <link>https://myeongcode.github.io/categories/daily/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://myeongcode.github.io/categories/daily/</guid>
         <description></description>
+        </item>
+        <item>
+        <title>Web</title>
+        <link>https://myeongcode.github.io/categories/web/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://myeongcode.github.io/categories/web/</guid>
+        <description>&lt;img src="https://myeongcode.github.io/categories/web/web-icon.png" alt="Featured image of post Web" /&gt;</description>
         </item>
         
     </channel>

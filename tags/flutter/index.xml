@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>flutter on 우명규</title>
+        <link>https://myeongcode.github.io/tags/flutter/</link>
+        <description>Recent content in flutter on 우명규</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <lastBuildDate>Mon, 17 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://myeongcode.github.io/tags/flutter/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>[Dart] Flutter에서 사용하는 Dart언어란?</title>
+        <link>https://myeongcode.github.io/p/dart-flutter%EC%97%90%EC%84%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-dart%EC%96%B8%EC%96%B4%EB%9E%80/</link>
+        <pubDate>Mon, 17 Apr 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://myeongcode.github.io/p/dart-flutter%EC%97%90%EC%84%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-dart%EC%96%B8%EC%96%B4%EB%9E%80/</guid>
+        <description>&lt;img src="https://myeongcode.github.io/p/dart-flutter%EC%97%90%EC%84%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-dart%EC%96%B8%EC%96%B4%EB%9E%80/dart-logo.png" alt="Featured image of post [Dart] Flutter에서 사용하는 Dart언어란?" /&gt;&lt;h2 id=&#34;dart란&#34;&gt;Dart란?&lt;/h2&gt;
+&lt;p&gt;Dart는 구글이 디자인한 &lt;strong&gt;멀티 플랫폼 프로그래밍언어&lt;/strong&gt;입니다.&lt;/p&gt;
+&lt;p&gt;자바스크립트를 대체할 수 있는 크로스 플랫폼 프로그래밍 언어를 목표로 설계했다고 합니다.&lt;/p&gt;
+&lt;p&gt;Dart는 Flutter에서 사용되는 언어이며 모든 플랫폼에서 빠른 앱을 위한 클라이언트 최적화 언어입니다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;UI 최적화용&lt;/strong&gt; : 사용자 인터페이스 생성 요구에 특화된 프로그래밍 언어로 개발&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;생산적인 개발&lt;/strong&gt; : 핫 리로드를 사용하여 실행 중인 앱에서 즉시 결과 확인&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;모든 플랫폼에서 빠름&lt;/strong&gt; : 모바일, 데스크톱 및 백엔드용 ARM 및 x64 머신 코드로 컴파일합니다. 또는 웹용 JavaScript로 컴파일&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://dart.dev/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Dart 공식 사이트&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;사이트에 본 설명에 의하면 Dart는 두 개의 컴파일러를 가지고 있다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://dart.dev/assets/img/Dart-platforms.svg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Dart Web&lt;/strong&gt; : Dart로 쓴 코드를 javascript로 변환해주는 컴파일러&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dart Native&lt;/strong&gt; : Dart로 쓴 코드를 여러 CPU의 아키텍쳐에 맞게 변환해주는 컴파일러
+(ARM32, 모바일인 ARM64(IOS, Android), 데스크탑인 x86_64(Mac, Linux, Windows) 등등에 맞게 변환해준다는 의미)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;jit-aot&#34;&gt;JIT, AOT&lt;/h2&gt;
+&lt;p&gt;Dart는 또 어떻게 컴파일 되는지에 대해 JIT, AOT로 볼 수 있다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;JIT(Just-In-Time)&lt;/strong&gt; : &lt;strong&gt;개발 중&lt;/strong&gt;에는 수정된 코드가 결과로 바로 나타날 수 있게끔 만드는 컴파일러로 Dart VM(Virtual Machine)을 사용하여 Just-In-Time 컴파일러를 제공합니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AOT(Ahead-of-time)&lt;/strong&gt; : &lt;strong&gt;배포를 할 때&lt;/strong&gt;에는 더이상 Dart VM(Virtual Machine)을 사용하지 않고 Ahead-Of-Time 컴파일러를 제공하여 각 아키텍쳐에 맞는 기계어로 컴파일이 되고 앱을 더 빠르게 실행시킬 수 있게 만듭니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이러한 특징을 갖는 것은 모바일 개발에 있어서 아주 중요하고 멋진 특징입니다.
+개발 중에 바로바로 피드백을 확인할 수 있고, 앱을 배포할 때에는 휴대폰, 노트북, 웹사이트에서 기계어를 실행하여 편하게 배포를 할 수 있습니다.&lt;/p&gt;
+&lt;h2 id=&#34;null-safety&#34;&gt;null safety&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;다른 언어에서는 코드에서 null 값을 참조해버리면 오류가 발생하여 더 이상 동작을 할 수 없게 만들지만, Dart는 이러한 문제를 방지하기 위해 null safety라는 것을 도입했습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;결론&#34;&gt;결론&lt;/h2&gt;
+&lt;p&gt;Flutter는 Dart라는 언어를 사용하는데 둘 다 구글에서 제작한 것이므로 Dart는 Flutter를 위한 언어라고 볼 수 있습니다. 그래서 Flutter에서의 Dart언어를 최적화하고싶다면 수정을 할 수 있다는 큰 장점이 있습니다.&lt;/p&gt;
+&lt;p&gt;이것이 중요한 이유는 React나 Vue는 언어에 대해 최적화를 하고싶다고 하여도 javascript를 수정할 수 없습니다. 다른 언어들도 마찬가지입니다. 그렇기때문에 이 점은 매우 강한 장점으로 보이며 그 속에 또 다른 단점이 존재할 수 있습니다.
+하지만, RN에 비해 Flutter의 사용비율이 급격히 증가해지면서 커뮤니티가 활성화되고있고 더 많은 기능을 기대할 수 있을 것 같습니다.&lt;/p&gt;
+&lt;p&gt;Flutter에 관심이 많다면 한번 배워보는 것도 좋을 것 같습니다.&lt;/p&gt;</description>
+        </item>
+        
+    </channel>
+</rss>
