@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Scaffold의 개념과 역할 그리고 사용법'>
+<title>[Flutter] Scaffold Widget</title>
+
+<link rel='canonical' href='https://myeongcode.github.io/p/flutter-scaffold-widget/'>
+
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='[Flutter] Scaffold Widget'>
+<meta property='og:description' content='Scaffold의 개념과 역할 그리고 사용법'>
+<meta property='og:url' content='https://myeongcode.github.io/p/flutter-scaffold-widget/'>
+<meta property='og:site_name' content='우명규'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='dart' /><meta property='article:tag' content='flutter' /><meta property='article:published_time' content='2023-04-17T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-04-17T00:00:00&#43;00:00'/><meta property='og:image' content='https://myeongcode.github.io/p/flutter-scaffold-widget/flutter-logo.png' />
+<meta name="twitter:title" content="[Flutter] Scaffold Widget">
+<meta name="twitter:description" content="Scaffold의 개념과 역할 그리고 사용법"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://myeongcode.github.io/p/flutter-scaffold-widget/flutter-logo.png' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/my-avatar_hua5f080a38ef5df72c539bf5b0829edad_408776_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">👀</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">우명규</a></h1>
+            <h2 class="site-description">나에게 특별한 재능이란 없다. 그저 열정적인 호기심만 있을 뿐</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/myeongcode'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about-me/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About me</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#scaffold란">Scaffold란?</a></li>
+    <li><a href="#역할">역할</a></li>
+    <li><a href="#parameter">parameter</a>
+      <ol>
+        <li><a href="#appbar">Appbar</a>
+          <ol>
+            <li><a href="#backgroundcolor--foregroundcolor">backgroundColor / foregroundColor</a></li>
+            <li><a href="#elevation--shadowcolor">elevation / shadowColor</a></li>
+            <li><a href="#leading--actions">leading / actions</a></li>
+          </ol>
+        </li>
+        <li><a href="#body">Body</a></li>
+        <li><a href="#bottom-navigation-bar">Bottom Navigation Bar</a></li>
+        <li><a href="#floating-action-button">Floating Action Button</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/flutter-scaffold-widget/">
+                <img src="/p/flutter-scaffold-widget/flutter-logo_hud4db78cc4099f0118a23ad8c4eb3c315_171298_800x0_resize_box_3.png"
+                        srcset="/p/flutter-scaffold-widget/flutter-logo_hud4db78cc4099f0118a23ad8c4eb3c315_171298_800x0_resize_box_3.png 800w, /p/flutter-scaffold-widget/flutter-logo_hud4db78cc4099f0118a23ad8c4eb3c315_171298_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="350" 
+                        loading="lazy"
+                        alt="Featured image of post [Flutter] Scaffold Widget" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/app/" style="background-color: #0078B9; color: #fff;">
+                App
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/flutter-scaffold-widget/">[Flutter] Scaffold Widget</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Scaffold의 개념과 역할 그리고 사용법
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Apr 17, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="scaffold란">Scaffold란?</h2>
+<blockquote>
+<p>Flutter에서 <code>Scaffold</code>는 <a class="link" href="https://m3.material.io/"  target="_blank" rel="noopener"
+    ><em>Material Design</em></a>에서 사용되는 앱의 뼈대(Layout)을 제공하는 위젯입니다.</p>
+</blockquote>
+<p><a class="link" href="https://api.flutter.dev/flutter/material/Scaffold-class.html"  target="_blank" rel="noopener"
+    ><em>Scaffold class</em></a></p>
+<h2 id="역할">역할</h2>
+<p><code>Scaffold</code>는 앱의 기본적인 레이아웃 구조를 정의하고, appbar, toolbar, drawer, tapbar 등과 같은 Material Design 구성요소를 구현합니다.</p>
+<p><code>Scaffold</code>는 일반적으로 <code>MaterialApp</code>위젯 내애서 사용되며, 앱의 뼈대를 제공하고, 많은 Material Design 구성요소를 간단하게 구현할 수 있기 때문에, Flutter앱을 개발할 때 매우 유용한 위젯 중 하나입니다.</p>
+<p><code>Scaffold</code> 위젯은 <code>body</code>속성을 통해 앱의 기본 컨텐츠를 정의하며, <code>appBar</code>속성을 통해 상단의 앱 바를 정의할 수 있습니다.</p>
+<p>또한, <code>drawer</code>속성을 사용하여 측면 드로어를 추가하거나 <code>bottomNavigationBar</code>속성을 사용하여 하단의 탭바를 추가할 수도 있습니다.</p>
+<p><img src="https://user-images.githubusercontent.com/67165016/232574889-3eaa6ab3-84d6-4903-bf60-53412d40ecf9.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<h2 id="parameter">parameter</h2>
+<blockquote>
+<p>Scaffold의 parameter는 다양하지만, 우리는 가장 범용적으로 사용하는 기능에 대해 다룰 것입니다.</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Scaffold</span> <span class="kd">extends</span> <span class="n">StatefulWidget</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">const</span> <span class="n">Scaffold</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">    <span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="n">appBar</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="n">body</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="n">floatingActionButton</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="n">floatingActionButtonLocation</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="n">floatingActionButtonAnimator</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="n">persistentFooterButtons</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="n">persistentFooterAlignment</span> <span class="o">=</span> <span class="n">AlignmentDirectional</span><span class="p">.</span><span class="n">centerEnd</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="n">drawer</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="n">onDrawerChanged</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="n">endDrawer</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="n">onEndDrawerChanged</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="n">bottomNavigationBar</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="n">bottomSheet</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="n">backgroundColor</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="n">resizeToAvoidBottomInset</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="n">primary</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="n">drawerDragStartBehavior</span> <span class="o">=</span> <span class="n">DragStartBehavior</span><span class="p">.</span><span class="n">start</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="n">extendBody</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="n">extendBodyBehindAppBar</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="n">drawerScrimColor</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="n">drawerEdgeDragWidth</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="n">drawerEnableOpenDragGesture</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="n">endDrawerEnableOpenDragGesture</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="p">.</span><span class="n">restorationId</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">})</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="appbar">Appbar</h3>
+<blockquote>
+<p>Application 최상단에 위치하고 있는 bar를 말합니다. 아래와 같이 <code>Scaffold</code>생성자에 AppBar를 전달하면 생성할 수 있습니다.</p>
+</blockquote>
+<p>자세한 내용은 <a class="link" href="https://api.flutter.dev/flutter/material/AppBar-class.html"  target="_blank" rel="noopener"
+    ><em>Appbar Class</em></a>를 확인하세요</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">HomeScreen</span> <span class="kd">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">const</span> <span class="n">HomeScreen</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="err">@</span><span class="n">override</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">Scaffold</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="nl">appBar:</span> <span class="n">AppBar</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">title:</span> <span class="kd">const</span> <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;HomeScreen&#39;</span><span class="p">),</span> <span class="c1">//타이틀 제목
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nl">centerTitle:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">//타이틀 가운데 정렬 (true/false)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://user-images.githubusercontent.com/67165016/232570649-24ed1411-b28f-4569-b602-e0ceff9771dc.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<hr>
+<h4 id="backgroundcolor--foregroundcolor">backgroundColor / foregroundColor</h4>
+<blockquote>
+<p>상단바의 배경색(backgroundColor) / 타이틀색(foregroundColor)를 지정할 때</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">HomeScreen</span> <span class="kd">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">const</span> <span class="n">HomeScreen</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="err">@</span><span class="n">override</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">Scaffold</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="nl">appBar:</span> <span class="n">AppBar</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">title:</span> <span class="kd">const</span> <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;HomeScreen&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">backgroundColor:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">green</span><span class="p">,</span> <span class="c1">//상단바 배경색
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nl">foregroundColor:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">black</span><span class="p">,</span> <span class="c1">//상단바 타이틀색
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://user-images.githubusercontent.com/67165016/232571720-dd01397d-4df9-4d51-a472-95762082c64a.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<hr>
+<h4 id="elevation--shadowcolor">elevation / shadowColor</h4>
+<blockquote>
+<p>상단바에 그림자효과를 줄 때</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">HomeScreen</span> <span class="kd">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">const</span> <span class="n">HomeScreen</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="err">@</span><span class="n">override</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">Scaffold</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="nl">appBar:</span> <span class="n">AppBar</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">title:</span> <span class="kd">const</span> <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;HomeScreen&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">elevation:</span> <span class="m">10</span><span class="p">,</span> <span class="c1">//상단바 Shadow 깊이
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nl">shadowColor:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">red</span><span class="p">,</span> <span class="c1">//상단바 Shadow 색
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://user-images.githubusercontent.com/67165016/232572441-ad87dd6e-4e2a-45df-bafd-64ded898836d.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<hr>
+<h4 id="leading--actions">leading / actions</h4>
+<blockquote>
+<p>상단바에 앞(leading)/뒤(actions)에 아이콘과 같은 위젯들을 추가하고 버튼 아이콘으로 onPressed도 실행할 수 있음</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">HomeScreen</span> <span class="kd">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">const</span> <span class="n">HomeScreen</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="err">@</span><span class="n">override</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">Scaffold</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="nl">appBar:</span> <span class="n">AppBar</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">title:</span> <span class="kd">const</span> <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;HomeScreen&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">leading:</span> <span class="kd">const</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="p">.</span><span class="n">ac_unit</span><span class="p">),</span> <span class="c1">//상단바 타이틀 앞에 위젯추가
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nl">actions:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">          <span class="c1">//상단바 타이틀 뒤에 위젯추가
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>          <span class="n">IconButton</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="nl">icon:</span> <span class="kd">const</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="p">.</span><span class="n">photo_album</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="nl">tooltip:</span> <span class="s1">&#39;Hi!&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nl">onPressed:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{},</span>
+</span></span><span class="line"><span class="cl">          <span class="p">),</span>
+</span></span><span class="line"><span class="cl">          <span class="n">IconButton</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="nl">icon:</span> <span class="kd">const</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="p">.</span><span class="n">pie_chart</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="nl">tooltip:</span> <span class="s1">&#39;Wow&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nl">onPressed:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{},</span>
+</span></span><span class="line"><span class="cl">          <span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">automaticallyImplyLeading:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">//뒤로가기 버튼 true(존재O)/false(존재X)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nl">centerTitle:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">//타이틀 가운데 정렬
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://user-images.githubusercontent.com/67165016/232573618-122d7705-0ffe-4d0b-9025-4f7fa6390dec.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<hr>
+<h3 id="body">Body</h3>
+<blockquote>
+<p><code>Appbar</code>의 중간영역이며, <code>body</code>는 하나의 Widget만 가질 수 있으며 메인 화면에 보여질 내용을 주로 작성합니다.</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">HomeScreen</span> <span class="kd">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">const</span> <span class="n">HomeScreen</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="err">@</span><span class="n">override</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">Scaffold</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="nl">appBar:</span> <span class="n">AppBar</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">title:</span> <span class="kd">const</span> <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;HomeScreen&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="nl">body:</span> <span class="n">Center</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">child:</span> <span class="n">Column</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">          <span class="nl">children:</span> <span class="kd">const</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;4&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;5&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;6&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">          <span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://user-images.githubusercontent.com/67165016/232578395-d3ae90f5-edde-4444-b2d4-978144e5d52d.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<hr>
+<h3 id="bottom-navigation-bar">Bottom Navigation Bar</h3>
+<blockquote>
+<p>앱 하단에 다른 뷰를 볼 수 있도록 메뉴바를 표시해주는 위젯입니다. 보통 페이지 별 바로가기 작업을 제공하기위해 만들어집니다.</p>
+</blockquote>
+<p>자세한 내용은 <a class="link" href="https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html"  target="_blank" rel="noopener"
+    ><em>BottonNavigationBar Class</em></a>를 확인하세요</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">HomeScreen</span> <span class="kd">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">const</span> <span class="n">HomeScreen</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="err">@</span><span class="n">override</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">Scaffold</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="nl">appBar:</span> <span class="n">AppBar</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">title:</span> <span class="kd">const</span> <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;HomeScreen&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="nl">bottomNavigationBar:</span> <span class="n">BottomNavigationBar</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">items:</span> <span class="kd">const</span> <span class="o">&lt;</span><span class="n">BottomNavigationBarItem</span><span class="o">&gt;</span><span class="p">[</span>
+</span></span><span class="line"><span class="cl">          <span class="n">BottomNavigationBarItem</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="nl">icon:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="p">.</span><span class="n">text_snippet</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="nl">label:</span> <span class="s1">&#39;나의 판매글&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="p">),</span>
+</span></span><span class="line"><span class="cl">          <span class="n">BottomNavigationBarItem</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="nl">icon:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="p">.</span><span class="n">home</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="nl">label:</span> <span class="s1">&#39;홈&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="p">),</span>
+</span></span><span class="line"><span class="cl">          <span class="n">BottomNavigationBarItem</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="nl">icon:</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="p">.</span><span class="n">people</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="nl">label:</span> <span class="s1">&#39;마이페이지&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">selectedItemColor:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">lightGreen</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://user-images.githubusercontent.com/67165016/232581045-996d5144-ffc3-42b8-8ade-0587256b4d3a.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<hr>
+<h3 id="floating-action-button">Floating Action Button</h3>
+<blockquote>
+<p>화면에 Fixed되는 원형 아이콘 버튼이며 일반적으로 화면 맨 하단 오른쪽에 위치하게 됩니다. Android 개발자들은 줄여서 <code>FAB</code>라고 부른다고 합니다. Icon뿐만아니라 Text로도 위젯을 사용할 수 있습니다.</p>
+</blockquote>
+<p>자세한 내용은 <a class="link" href="https://api.flutter.dev/flutter/material/FloatingActionButton-class.html"  target="_blank" rel="noopener"
+    ><em>FloationActionButton Class</em></a>를 확인하세요</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">HomeScreen</span> <span class="kd">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">const</span> <span class="n">HomeScreen</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="err">@</span><span class="n">override</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">Scaffold</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="nl">appBar:</span> <span class="n">AppBar</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">title:</span> <span class="kd">const</span> <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;HomeScreen&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="nl">floatingActionButton:</span> <span class="n">FloatingActionButton</span><span class="p">.</span><span class="n">extended</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">label:</span> <span class="kd">const</span> <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;Approve&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">icon:</span> <span class="kd">const</span> <span class="n">Icon</span><span class="p">(</span><span class="n">Icons</span><span class="p">.</span><span class="n">thumb_up</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">backgroundColor:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">pink</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">onPressed:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="n">print</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">)},</span>
+</span></span><span class="line"><span class="cl">      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://user-images.githubusercontent.com/67165016/232583121-190f84a8-be5f-4cd6-b421-03a054e0e935.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<hr>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/dart/">dart</a>
+        
+            <a href="/tags/flutter/">flutter</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/dart-flutter%EC%97%90%EC%84%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-dart%EC%96%B8%EC%96%B4%EB%9E%80/">
+        
+        
+            <div class="article-image">
+                <img src="/p/dart-flutter%EC%97%90%EC%84%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-dart%EC%96%B8%EC%96%B4%EB%9E%80/dart-logo.1c7953bcc5ad2251de154f97e886bfff_hu6ca51b6ea6e3939baa7b81d018f1cfc2_224667_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post [Dart] Flutter에서 사용하는 Dart언어란?"
+                        
+                        data-hash="md5-HHlTvMWtIlHeFU&#43;X6Ia//w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Dart] Flutter에서 사용하는 Dart언어란?</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 우명규
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
