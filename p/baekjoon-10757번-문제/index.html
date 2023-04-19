@@ -446,7 +446,7 @@
 	
 ></p>
 <p>^오^</p>
-<p>다시 두 수의 덧셈을 구하여 출력해보는 걸로 하자</p>
+<p>다시 두 수의 덧셈을 구하여 출력해보는 걸로 하고, 백준의 입력을 받을 수 있게끔 읽는 파일을 <code>&quot;/dev/stdin&quot;</code>으로 바꿔주자</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -476,7 +476,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;fs&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="s2">&#34;./input.txt&#34;</span><span class="p">).</span><span class="nx">toString</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">input</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="s2">&#34;/dev/stdin&#34;</span><span class="p">).</span><span class="nx">toString</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">input</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&#34; &#34;</span><span class="p">).</span><span class="nx">filter</span><span class="p">((</span><span class="nx">num</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">num</span> <span class="o">!==</span> <span class="s2">&#34;&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">num1</span> <span class="o">=</span> <span class="nx">BigInt</span><span class="p">(</span><span class="nx">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
 </span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">num2</span> <span class="o">=</span> <span class="nx">BigInt</span><span class="p">(</span><span class="nx">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
@@ -490,6 +490,16 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><img src="https://user-images.githubusercontent.com/67165016/233051908-b5a86586-9504-4bab-8263-009383641d21.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233053742-c3c773d3-3ee6-4c42-9eda-5ec3fe59220a.png"
 	
 	
 	
