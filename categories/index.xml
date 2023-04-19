@@ -5,7 +5,15 @@
         <link>https://myeongcode.github.io/categories/</link>
         <description>Recent content in Categories on 우명규</description>
         <generator>Hugo -- gohugo.io</generator>
-        <lastBuildDate>Tue, 18 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://myeongcode.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 19 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://myeongcode.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Baekjoon</title>
+        <link>https://myeongcode.github.io/categories/baekjoon/</link>
+        <pubDate>Wed, 19 Apr 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://myeongcode.github.io/categories/baekjoon/</guid>
+        <description>&lt;img src="https://myeongcode.github.io/categories/baekjoon/baekjoon.png" alt="Featured image of post Baekjoon" /&gt;</description>
+        </item>
+        <item>
         <title>App</title>
         <link>https://myeongcode.github.io/categories/app/</link>
         <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
@@ -28,14 +36,6 @@
         
         <guid>https://myeongcode.github.io/categories/markdown/</guid>
         <description>&lt;img src="https://myeongcode.github.io/categories/markdown/markdown.png" alt="Featured image of post Markdown" /&gt;</description>
-        </item>
-        <item>
-        <title>Baekjoon</title>
-        <link>https://myeongcode.github.io/categories/baekjoon/</link>
-        <pubDate>Wed, 26 Oct 2022 00:00:00 +0000</pubDate>
-        
-        <guid>https://myeongcode.github.io/categories/baekjoon/</guid>
-        <description>&lt;img src="https://myeongcode.github.io/categories/baekjoon/baekjoon.png" alt="Featured image of post Baekjoon" /&gt;</description>
         </item>
         <item>
         <title>Daily</title>
