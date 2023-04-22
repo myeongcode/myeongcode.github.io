@@ -1,0 +1,1851 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Firebase의 Auth서버를 Flutter와 연동해봅시다.'>
+<title>[Flutter] Flutter와 Firebase 연동하기 (Android)</title>
+
+<link rel='canonical' href='https://myeongcode.github.io/p/flutter-flutter%EC%99%80-firebase-%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0-android/'>
+
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='[Flutter] Flutter와 Firebase 연동하기 (Android)'>
+<meta property='og:description' content='Firebase의 Auth서버를 Flutter와 연동해봅시다.'>
+<meta property='og:url' content='https://myeongcode.github.io/p/flutter-flutter%EC%99%80-firebase-%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0-android/'>
+<meta property='og:site_name' content='우명규'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='dart' /><meta property='article:tag' content='flutter' /><meta property='article:published_time' content='2023-04-21T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-04-21T00:00:00&#43;00:00'/><meta property='og:image' content='https://myeongcode.github.io/p/flutter-flutter%EC%99%80-firebase-%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0-android/flutter-logo.png' />
+<meta name="twitter:title" content="[Flutter] Flutter와 Firebase 연동하기 (Android)">
+<meta name="twitter:description" content="Firebase의 Auth서버를 Flutter와 연동해봅시다."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://myeongcode.github.io/p/flutter-flutter%EC%99%80-firebase-%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0-android/flutter-logo.png' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/my-avatar_hua5f080a38ef5df72c539bf5b0829edad_408776_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">👀</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">우명규</a></h1>
+            <h2 class="site-description">나에게 특별한 재능이란 없다. 그저 열정적인 호기심만 있을 뿐</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/myeongcode'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about-me/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#flutter-프로젝트-생성">Flutter 프로젝트 생성</a></li>
+    <li><a href="#firebase-연동">Firebase 연동</a>
+      <ol>
+        <li><a href="#firebase-프로젝트-생성">Firebase 프로젝트 생성</a></li>
+        <li><a href="#android-앱-등록">Android 앱 등록</a></li>
+        <li><a href="#flutter-package-설치">Flutter Package 설치</a>
+          <ol>
+            <li><a href="#cloud_firestore"><strong>cloud_firestore</strong></a></li>
+            <li><a href="#firebase_core"><strong>firebase_core</strong></a></li>
+            <li><a href="#firebase_auth"><strong>firebase_auth</strong></a></li>
+          </ol>
+        </li>
+        <li><a href="#firebase-초기화">Firebase 초기화</a></li>
+        <li><a href="#firebase-instance-생성">Firebase instance 생성</a>
+          <ol>
+            <li><a href="#사용자-signup-기능-구현">사용자 SignUp 기능 구현</a></li>
+            <li><a href="#사용자-signin-기능-구현">사용자 SignIn 기능 구현</a></li>
+            <li><a href="#sdk-version-에러">Sdk version 에러</a></li>
+          </ol>
+        </li>
+        <li><a href="#계정-서버-생성">계정 서버 생성</a></li>
+      </ol>
+    </li>
+    <li><a href="#참고자료">참고자료</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/flutter-flutter%EC%99%80-firebase-%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0-android/">
+                <img src="/p/flutter-flutter%EC%99%80-firebase-%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0-android/flutter-logo_hud4db78cc4099f0118a23ad8c4eb3c315_171298_800x0_resize_box_3.png"
+                        srcset="/p/flutter-flutter%EC%99%80-firebase-%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0-android/flutter-logo_hud4db78cc4099f0118a23ad8c4eb3c315_171298_800x0_resize_box_3.png 800w, /p/flutter-flutter%EC%99%80-firebase-%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0-android/flutter-logo_hud4db78cc4099f0118a23ad8c4eb3c315_171298_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="350" 
+                        loading="lazy"
+                        alt="Featured image of post [Flutter] Flutter와 Firebase 연동하기 (Android)" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/app/" style="background-color: #0078B9; color: #fff;">
+                App
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/flutter-flutter%EC%99%80-firebase-%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0-android/">[Flutter] Flutter와 Firebase 연동하기 (Android)</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Firebase의 Auth서버를 Flutter와 연동해봅시다.
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Apr 21, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    8 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="flutter-프로젝트-생성">Flutter 프로젝트 생성</h2>
+<p>먼저, Firebase와 연동할 Flutter프로젝트를 하나 생성해줍니다.</p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233696978-2ecb6e89-b234-4302-9624-063cb78e2660.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>프로젝트 이름은 firebase_login으로 설정해줬음</p>
+<p>그리고 프로젝트를 연 후 입력폼을 받을 스크린파일을 하나 만들어줍니다.</p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233697248-a6f19a72-feeb-4b8f-bb46-bdffe2b94ef5.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="p">(</span><span class="n">lib</span> <span class="o">&gt;</span> <span class="n">screens</span> <span class="o">&gt;</span> <span class="n">login_screen</span><span class="p">.</span><span class="n">dart</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">LoginScreen</span> <span class="kd">extends</span> <span class="n">StatefulWidget</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">const</span> <span class="n">LoginScreen</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="err">@</span><span class="n">override</span>
+</span></span><span class="line"><span class="cl">  <span class="n">State</span><span class="o">&lt;</span><span class="n">LoginScreen</span><span class="o">&gt;</span> <span class="n">createState</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">_LoginScreenState</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">_LoginScreenState</span> <span class="kd">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">LoginScreen</span><span class="o">&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">String</span> <span class="n">userPassword</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">String</span> <span class="n">userEmail</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="err">@</span><span class="n">override</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">Scaffold</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="nl">appBar:</span> <span class="n">AppBar</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">title:</span> <span class="kd">const</span> <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;LoginScreen&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="nl">body:</span> <span class="n">GestureDetector</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">onTap:</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="n">FocusScope</span><span class="p">.</span><span class="n">of</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="n">unfocus</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">child:</span> <span class="n">Center</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">          <span class="nl">child:</span> <span class="n">Container</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="nl">padding:</span> <span class="kd">const</span> <span class="n">EdgeInsets</span><span class="p">.</span><span class="n">all</span><span class="p">(</span><span class="m">20</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">            <span class="nl">child:</span> <span class="n">Column</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">              <span class="nl">children:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                <span class="n">TextFormField</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                  <span class="nl">keyboardType:</span> <span class="n">TextInputType</span><span class="p">.</span><span class="n">emailAddress</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                  <span class="nl">key:</span> <span class="kd">const</span> <span class="n">ValueKey</span><span class="p">(</span><span class="m">1</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                  <span class="nl">decoration:</span> <span class="kd">const</span> <span class="n">InputDecoration</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                    <span class="nl">hintText:</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="nl">contentPadding:</span> <span class="n">EdgeInsets</span><span class="p">.</span><span class="n">all</span><span class="p">(</span><span class="m">15</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">),</span>
+</span></span><span class="line"><span class="cl">                  <span class="nl">onSaved:</span> <span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">userEmail</span> <span class="o">=</span> <span class="n">value</span><span class="o">!</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                  <span class="nl">onChanged:</span> <span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">userEmail</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                <span class="p">),</span>
+</span></span><span class="line"><span class="cl">                <span class="kd">const</span> <span class="n">SizedBox</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                  <span class="nl">height:</span> <span class="m">20</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="p">),</span>
+</span></span><span class="line"><span class="cl">                <span class="n">TextFormField</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                  <span class="nl">keyboardType:</span> <span class="n">TextInputType</span><span class="p">.</span><span class="n">number</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                  <span class="nl">key:</span> <span class="kd">const</span> <span class="n">ValueKey</span><span class="p">(</span><span class="m">2</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                  <span class="nl">decoration:</span> <span class="kd">const</span> <span class="n">InputDecoration</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                    <span class="nl">hintText:</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="nl">contentPadding:</span> <span class="n">EdgeInsets</span><span class="p">.</span><span class="n">all</span><span class="p">(</span><span class="m">15</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">),</span>
+</span></span><span class="line"><span class="cl">                  <span class="nl">onSaved:</span> <span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">userPassword</span> <span class="o">=</span> <span class="n">value</span><span class="o">!</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                  <span class="nl">onChanged:</span> <span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">userPassword</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                <span class="p">),</span>
+</span></span><span class="line"><span class="cl">                <span class="kd">const</span> <span class="n">SizedBox</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                  <span class="nl">height:</span> <span class="m">20</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="p">),</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Container</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                  <span class="nl">padding:</span> <span class="kd">const</span> <span class="n">EdgeInsets</span><span class="p">.</span><span class="n">all</span><span class="p">(</span><span class="m">15</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                  <span class="nl">height:</span> <span class="m">90</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                  <span class="nl">width:</span> <span class="m">90</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                  <span class="nl">decoration:</span> <span class="n">BoxDecoration</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                    <span class="nl">color:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">white</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="nl">borderRadius:</span> <span class="n">BorderRadius</span><span class="p">.</span><span class="n">circular</span><span class="p">(</span><span class="m">20</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">),</span>
+</span></span><span class="line"><span class="cl">                  <span class="nl">child:</span> <span class="n">GestureDetector</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                    <span class="nl">onTap:</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                      <span class="n">print</span><span class="p">(</span><span class="n">userEmail</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                      <span class="n">print</span><span class="p">(</span><span class="n">userPassword</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">                    <span class="nl">child:</span> <span class="n">Container</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                      <span class="nl">decoration:</span> <span class="n">BoxDecoration</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                        <span class="nl">borderRadius:</span> <span class="n">BorderRadius</span><span class="p">.</span><span class="n">circular</span><span class="p">(</span><span class="m">50</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                        <span class="nl">gradient:</span> <span class="kd">const</span> <span class="n">LinearGradient</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                          <span class="nl">colors:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">Colors</span><span class="p">.</span><span class="n">orange</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">Colors</span><span class="p">.</span><span class="n">red</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                          <span class="p">],</span>
+</span></span><span class="line"><span class="cl">                          <span class="nl">begin:</span> <span class="n">Alignment</span><span class="p">.</span><span class="n">topLeft</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                          <span class="nl">end:</span> <span class="n">Alignment</span><span class="p">.</span><span class="n">bottomRight</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">),</span>
+</span></span><span class="line"><span class="cl">                      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">                      <span class="nl">child:</span> <span class="kd">const</span> <span class="n">Icon</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">Icons</span><span class="p">.</span><span class="n">arrow_forward</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="nl">color:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">white</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="nl">size:</span> <span class="m">28</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">),</span>
+</span></span><span class="line"><span class="cl">                  <span class="p">),</span>
+</span></span><span class="line"><span class="cl">                <span class="p">),</span>
+</span></span><span class="line"><span class="cl">              <span class="p">],</span>
+</span></span><span class="line"><span class="cl">            <span class="p">),</span>
+</span></span><span class="line"><span class="cl">          <span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>간단하게 입력폼으로 email과 password를 받아서 아래 버튼을 누르면 입력폼에 입력한 email과 password가 출력되게끔 만들었습니다.</p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233697699-3df3637a-7630-4b29-8a2d-e6c33ff26e24.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233698419-4c2acce9-81bf-4571-9b90-74d044327ed2.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>잘 나오쥬? ㅎㅎ</p>
+<hr>
+<h2 id="firebase-연동">Firebase 연동</h2>
+<blockquote>
+<p><a class="link" href="https://firebase.google.com/?hl=ko"  target="_blank" rel="noopener"
+    >Firebase페이지</a>에 접속해서 로그인을 해줍니다.</p>
+</blockquote>
+<hr>
+<h3 id="firebase-프로젝트-생성">Firebase 프로젝트 생성</h3>
+<p>로그인을 하고나면 <code>시작하기</code>로 클릭하여 프로젝트 생성창으로 들어옵니다.</p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233698747-9ded8b17-93b7-4593-abf2-682c2eeb5a77.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>위에서 <strong>프로젝트 추가</strong>를 누릅니다.</p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233699205-eda992cb-dd21-4701-b7eb-c993c94416be.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>프로젝트 이름은 가볍게 <code>login</code>으로 만들어주겠습니다.</p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233699490-476ab08f-d6b6-4247-b840-16305956055f.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>애널리틱스 사용 설정을 냅두고 다음으로 넘어갑니다.</p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233699756-cd80603a-678a-4038-b721-9d26dec32dc8.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>애널리틱스 위치를 <code>대한민국</code>으로 설정하고 프로젝트를 만듭니다.</p>
+<p>프로젝트가 다 만들어지고 <code>계속</code>버튼을 누르면 다음화면이 표시됩니다.</p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233700205-fa480cfa-9d17-4113-a0f3-0b2940c322e1.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<hr>
+<h3 id="android-앱-등록">Android 앱 등록</h3>
+<p>우리는 Android 기기를 연동할 것이므로 Android 아이콘표시를 누릅니다.</p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233700423-a4460d43-7089-4d79-8eef-6a18d2b17681.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233700780-4f74b3d0-01bf-45dd-b2d4-96ebc768d614.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>그러면 위와같이 <code>Android 앱에 Firebase 추가</code>창이 나타납니다.</p>
+<p>여기서 <code>Android 패키지 이름</code>은 우리가 만든 Flutter 프로젝트 내의 <code>android/app/build.gradle</code>파일에서 확인하실 수 있습니다.</p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233701010-829137dd-2d88-4351-857d-f22b2b09f448.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gradle" data-lang="gradle"><span class="line"><span class="cl"><span class="o">(</span><span class="n">android</span> <span class="o">&gt;</span> <span class="n">app</span> <span class="o">&gt;</span> <span class="n">build</span><span class="o">.</span><span class="na">gradle</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">...</span>
+</span></span><span class="line"><span class="cl">  <span class="n">defaultConfig</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
+</span></span><span class="line"><span class="cl">    <span class="n">applicationId</span> <span class="s2">&#34;com.example.firebase_login&#34;</span> <span class="c1">//이것이 android 패키지 이름
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">...</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="cl">  <span class="o">...</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>com.example.firebase_login</code>을 복사해서 android 추가하는 페이지에 붙여넣습니다.</p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233701737-959fc291-2b14-43ab-bd90-7fb8595a1458.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>앱 닉네임은 정해도 좋지만, 우리는 그냥 기본값으로 쓰고 다음으로 넘어가보도록 하겠습니다.</p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233702029-7ecd923f-d3a3-4017-bd94-a36f28e92241.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233702419-ad6269ed-2831-4631-922f-00da69abd3e6.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>위처럼 나온 설명대로 <code>google-services.json</code> 파일을 <code>android &gt; app</code> 폴더 내에 넣어놓고 다음을 눌러줍시다.</p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233702812-0f3cbeb8-5b31-4737-b25c-8476f3731443.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<ol>
+<li><code>android &gt; build.gradle</code> 파일에서 위와 같은 코드를 추가해줍니다.</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gradle" data-lang="gradle"><span class="line"><span class="cl"><span class="n">buildscript</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
+</span></span><span class="line"><span class="cl">    <span class="n">repositories</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">google</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mavenCentral</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">dependencies</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">classpath</span> <span class="s1">&#39;com.google.gms:google-services:4.3.15&#39;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">...</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">allprojects</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">repositories</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">google</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mavenCentral</span><span class="o">()</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<p><img src="https://user-images.githubusercontent.com/67165016/233703763-ad043da3-a7b7-4d07-ad14-695de4112f5b.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<ol start="2">
+<li><code>android &gt; app &gt; build.gradle</code> 파일에서 위와 같은 코드를 추가해줍니다.</li>
+</ol>
+<blockquote>
+<p>프로젝트에서 plugin쪽은 아마 <code>apply plugin: ~~</code>이런 식으로 되어있을 것임 맞춰서 넣어주면 됩니다.</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gradle" data-lang="gradle"><span class="line"><span class="cl"><span class="o">(</span><span class="n">android</span> <span class="o">&gt;</span> <span class="n">app</span> <span class="o">&gt;</span> <span class="n">build</span><span class="o">.</span><span class="na">gradle</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">&#39;com.android.application&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">&#39;com.google.gms.google-services&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">dependencies</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">implementation</span> <span class="nf">platform</span><span class="o">(</span><span class="s1">&#39;com.google.firebase:firebase-bom:31.5.0&#39;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">implementation</span> <span class="s1">&#39;com.google.firebase:firebase-analytics&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>모두 코드를 추가해주었다면 다음 버튼을 눌러줍니다.</p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233704736-1f4ad4fa-8b88-482e-aa09-a7bdd2604903.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233704883-46113003-0b35-4df7-a992-dfb57ac4d354.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>콘솔로 이동하면 다음과 같이 안드로이드 앱이 추가된 것을 확인할 수 있습니다.</p>
+<h3 id="flutter-package-설치">Flutter Package 설치</h3>
+<blockquote>
+<p>Flutter에서 Firebase를 사용하기 위해서는 3가지 Package를 다운받아야 합니다.</p>
+</blockquote>
+<h4 id="cloud_firestore"><strong>cloud_firestore</strong></h4>
+<p>클라우드 호스팅되는 noSQL 데이터베이스인 Cloud Firestore용 Flutter 플러그인은 Android 및 iOS에서 라이브 동기화 및 오프라인 지원을 제공</p>
+<h4 id="firebase_core"><strong>firebase_core</strong></h4>
+<p>여러 Firebase 앱에 연결할 수 있는 Firebase Core용 Flutter 플러그인</p>
+<h4 id="firebase_auth"><strong>firebase_auth</strong></h4>
+<p>Firebase Auth용 Flutter 플러그인은 암호, 전화 번호 및 Google, Facebook 및 Twitter와 같은 ID 공급자를 사용하여 Android 및 iOS 인증을 가능하게 함</p>
+<hr>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="l">(pubspec.yaml)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">dependencies</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">flutter</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">sdk</span><span class="p">:</span><span class="w"> </span><span class="l">flutter</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">cloud_firestore</span><span class="p">:</span><span class="w"> </span><span class="l">^4.5.2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">firebase_core</span><span class="p">:</span><span class="w"> </span><span class="l">^2.10.0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">firebase_auth</span><span class="p">:</span><span class="w"> </span><span class="l">^4.4.2</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="firebase-초기화">Firebase 초기화</h3>
+<p>패키지를 모두 다운받고 Flutter프로젝트로 돌아옵니다.</p>
+<p>우리는 <code>firebase_core</code>라는 패키지를 설치하였는데, 플러터에서 firebase를 사용하기에 앞서 항상 초기화해주는 메서드인 <code>Firebase.initalizeApp()</code> 메서드를 호출해야합니다.</p>
+<p>그렇지 않으면 다음과 같은 에러가 발생하게 됩니다.</p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233765024-40029ae1-e318-4333-9fab-1e71b6aabdb7.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>이 코드는 <code>main.dart</code>에 넣어주도록 하겠습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="p">(</span><span class="n">lib</span> <span class="o">&gt;</span> <span class="n">main</span><span class="p">.</span><span class="n">dart</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">import</span> <span class="s1">&#39;package:firebase_login/screens/login_screen.dart&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">import</span> <span class="s1">&#39;package:firebase_core/firebase_core.dart&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">WidgetsFlutterBinding</span><span class="p">.</span><span class="n">ensureInitialized</span><span class="p">();</span> <span class="c1">//Flutter 코어 엔진 초기화
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="n">Firebase</span><span class="p">.</span><span class="n">initializeApp</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">runApp</span><span class="p">(</span><span class="kd">const</span> <span class="n">MyApp</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">MyApp</span> <span class="kd">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">const</span> <span class="n">MyApp</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="err">@</span><span class="n">override</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">MaterialApp</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="nl">debugShowCheckedModeBanner:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nl">title:</span> <span class="s1">&#39;Flutter Demo&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nl">theme:</span> <span class="n">ThemeData</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">primarySwatch:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">blue</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="nl">home:</span> <span class="kd">const</span> <span class="n">LoginScreen</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>Firebase.initializeApp()</code> 메서드는 비동기 방식으로 작동하는 메서드입니다. 그래서 이 메서드는 플러터와 통신을 하고싶어하지만 플러터 최상위 메서드인 <code>runApp()</code> 메서드가 호출되기 전에는 Flutter 엔진이 초기화 되지 않아서 접근이 불가합니다.</p>
+<p>메인메소드 내부에서 Flutter 엔진과 관련된 비동기 메서드를 사용하려면 먼저 Flutter 코어 엔진을 초기화시켜줘야 하는데, 이 역할을 하는 메서드가 <code>WidgetsFlutterBinding.ensureInitialized()</code> 입니다.</p>
+<blockquote>
+<p>즉, Flutter에서 Firebase를 사용하려면 main메서드 내부에서 비동기 방식으로 <code>WidgetsFlutterBinding.ensureInitialized()</code> 을 호출하고 난 후 <code>Firebase.initalizeApp()</code> 을 호출해야합니다.</p>
+</blockquote>
+<p>그리고 또, 비동기 방식으로 바꿔줘야하므로 다음과 같이 수정하면 됩니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="p">(</span><span class="n">lib</span> <span class="o">&gt;</span> <span class="n">main</span><span class="p">.</span><span class="n">dart</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">import</span> <span class="s1">&#39;package:firebase_login/screens/login_screen.dart&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">import</span> <span class="s1">&#39;package:firebase_core/firebase_core.dart&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">main</span><span class="p">()</span> <span class="kd">async</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">WidgetsFlutterBinding</span><span class="p">.</span><span class="n">ensureInitialized</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">await</span> <span class="n">Firebase</span><span class="p">.</span><span class="n">initializeApp</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">runApp</span><span class="p">(</span><span class="kd">const</span> <span class="n">MyApp</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">MyApp</span> <span class="kd">extends</span> <span class="n">StatelessWidget</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">const</span> <span class="n">MyApp</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="err">@</span><span class="n">override</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">MaterialApp</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="nl">debugShowCheckedModeBanner:</span> <span class="kc">false</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nl">title:</span> <span class="s1">&#39;Flutter Demo&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nl">theme:</span> <span class="n">ThemeData</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">primarySwatch:</span> <span class="n">Colors</span><span class="p">.</span><span class="n">blue</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="nl">home:</span> <span class="kd">const</span> <span class="n">LoginScreen</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="firebase-instance-생성">Firebase instance 생성</h3>
+<h4 id="사용자-signup-기능-구현">사용자 SignUp 기능 구현</h4>
+<p>본격적으로 사용자 등록기능을 구현해보겠습니다.</p>
+<p>우리가 만들었던 login_screen.dart에서 firebase_auth 패키지를 import하고 instance를 생성해주겠습니다.</p>
+<p>한번 생성이 되면 변하지 않을 것이기 때문에 final타입으로 지정해주겠습니다. 그리고 외부에서 접근할 수 없도록 프라이빗(_)으로 만들어주겠습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="p">(</span><span class="n">lib</span> <span class="o">&gt;</span> <span class="n">screens</span> <span class="o">&gt;</span> <span class="n">login_screen</span><span class="p">.</span><span class="n">dart</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">import</span> <span class="s1">&#39;package:firebase_auth/firebase_auth.dart&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">LoginScreen</span> <span class="kd">extends</span> <span class="n">StatefulWidget</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">const</span> <span class="n">LoginScreen</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="err">@</span><span class="n">override</span>
+</span></span><span class="line"><span class="cl">  <span class="n">State</span><span class="o">&lt;</span><span class="n">LoginScreen</span><span class="o">&gt;</span> <span class="n">createState</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">_LoginScreenState</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">_LoginScreenState</span> <span class="kd">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">LoginScreen</span><span class="o">&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">final</span> <span class="n">_authentication</span> <span class="o">=</span> <span class="n">FirebaseAuth</span><span class="p">.</span><span class="n">instance</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">String</span> <span class="n">userPassword</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">String</span> <span class="n">userEmail</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>우리는 사용자의 등록과 인증기능에 사용할 <code>_authentication</code>이라는 instance를 생성했습니다!</p>
+<p>이 인스턴스로 우리는 이메일과 패스워드를 사용한 사용자 등록 메서드<code>.createUserWithEmailAndPassword()</code>이나 로그인을 할 수 있도록 만들어주는 메서드<code>.signInWithEmailAndPassword()</code>를 사용할 수 있습니다!</p>
+<p>먼저 로그인기능을 만들기 전에 사용자를 등록하는 메서드를 만들어보겠습니다.</p>
+<p>우리는 <code>userEmail</code>과 <code>userPassword</code>로 사용자의 이메일과 패스워드를 받아올 수 있었습니다.</p>
+<p>그렇기때문에 다음과 같이 버튼을 눌렀을 때 해당 값이 인자로 넘어가게끔 만들어주면 됩니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="p">(</span><span class="n">lib</span> <span class="o">&gt;</span> <span class="n">screens</span> <span class="o">&gt;</span> <span class="n">login_screen</span><span class="p">.</span><span class="n">dart</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="nl">child:</span> <span class="n">GestureDetector</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nl">onTap:</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">_authentication</span><span class="p">.</span><span class="n">createUserWithEmailAndPassword</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">email:</span> <span class="n">userEmail</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">password:</span> <span class="n">userPassword</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>예외처리를 생각한다면 다음과 같이 만들면 되겠죠?</p>
+<p>정상적으로 사용자 등록이 되고나면 <code>ChatScreen()</code> 으로 넘어가게끔 만들어줍시다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="p">(</span><span class="n">lib</span> <span class="o">&gt;</span> <span class="n">screens</span> <span class="o">&gt;</span> <span class="n">login_screen</span><span class="p">.</span><span class="n">dart</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="nl">child:</span> <span class="n">GestureDetector</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nl">onTap:</span> <span class="p">()</span> <span class="kd">async</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">final</span> <span class="n">newUser</span> <span class="o">=</span> <span class="kd">await</span> <span class="n">_authentication</span>
+</span></span><span class="line"><span class="cl">            <span class="p">.</span><span class="n">createUserWithEmailAndPassword</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">          <span class="nl">email:</span> <span class="n">userEmail</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nl">password:</span> <span class="n">userPassword</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">newUser</span><span class="p">.</span><span class="n">user</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="n">Navigator</span><span class="p">.</span><span class="n">push</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">context</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">MaterialPageRoute</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">              <span class="nl">builder:</span> <span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="kd">const</span> <span class="n">ChatScreen</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">              <span class="p">},</span>
+</span></span><span class="line"><span class="cl">            <span class="p">),</span>
+</span></span><span class="line"><span class="cl">          <span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">print</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>이 <code>ChatScreen()</code>에서 해당 사용자의 정보를 사용하려면 다음과 같이 instance를 생성해줘야합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="p">(</span><span class="n">lib</span> <span class="o">&gt;</span> <span class="n">screens</span> <span class="o">&gt;</span> <span class="n">chat_screen</span><span class="p">.</span><span class="n">dart</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">import</span> <span class="s1">&#39;package:firebase_auth/firebase_auth.dart&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">ChatScreen</span> <span class="kd">extends</span> <span class="n">StatefulWidget</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">const</span> <span class="n">ChatScreen</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="err">@</span><span class="n">override</span>
+</span></span><span class="line"><span class="cl">  <span class="n">State</span><span class="o">&lt;</span><span class="n">ChatScreen</span><span class="o">&gt;</span> <span class="n">createState</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">_ChatScreenState</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">_ChatScreenState</span> <span class="kd">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">ChatScreen</span><span class="o">&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">final</span> <span class="n">_authentication</span> <span class="o">=</span> <span class="n">FirebaseAuth</span><span class="p">.</span><span class="n">instance</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">User</span><span class="o">?</span> <span class="n">loggedUser</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="err">@</span><span class="n">override</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="n">initState</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">super</span><span class="p">.</span><span class="n">initState</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">getCurrentUser</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="n">getCurrentUser</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="kd">final</span> <span class="n">currentUser</span> <span class="o">=</span> <span class="n">_authentication</span><span class="p">.</span><span class="n">currentUser</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="n">currentUser</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">loggedUser</span> <span class="o">=</span> <span class="n">currentUser</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">print</span><span class="p">(</span><span class="n">loggedUser</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">print</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="err">@</span><span class="n">override</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">Scaffold</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="nl">appBar:</span> <span class="n">AppBar</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">title:</span> <span class="kd">const</span> <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;ChatScreen&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="nl">body:</span> <span class="kd">const</span> <span class="n">Center</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">child:</span> <span class="n">Text</span><span class="p">(</span><span class="s2">&#34;ChatScreen&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>이것도 마찬가지로 간단하게 예외처리를 하고 현재 로그인한 유저를 페이지가 로드되기 전에 데이터를 가져오게끔 만들기 위해 <code>initalState()</code>에 해당 함수를 불러오도록 하겠습니다</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="p">(</span><span class="n">lib</span> <span class="o">&gt;</span> <span class="n">screens</span> <span class="o">&gt;</span> <span class="n">chat_screen</span><span class="p">.</span><span class="n">dart</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">import</span> <span class="s1">&#39;package:firebase_auth/firebase_auth.dart&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">import</span> <span class="s1">&#39;package:flutter/material.dart&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">ChatScreen</span> <span class="kd">extends</span> <span class="n">StatefulWidget</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">const</span> <span class="n">ChatScreen</span><span class="p">({</span><span class="k">super</span><span class="p">.</span><span class="n">key</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="err">@</span><span class="n">override</span>
+</span></span><span class="line"><span class="cl">  <span class="n">State</span><span class="o">&lt;</span><span class="n">ChatScreen</span><span class="o">&gt;</span> <span class="n">createState</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="n">_ChatScreenState</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">_ChatScreenState</span> <span class="kd">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">ChatScreen</span><span class="o">&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">final</span> <span class="n">_authentication</span> <span class="o">=</span> <span class="n">FirebaseAuth</span><span class="p">.</span><span class="n">instance</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">User</span><span class="o">?</span> <span class="n">loggedUser</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="err">@</span><span class="n">override</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="n">initState</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">super</span><span class="p">.</span><span class="n">initState</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">getCurrentUser</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="n">getCurrentUser</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="kd">final</span> <span class="n">currentUser</span> <span class="o">=</span> <span class="n">_authentication</span><span class="p">.</span><span class="n">currentUser</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="n">currentUser</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">loggedUser</span> <span class="o">=</span> <span class="n">currentUser</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">print</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="err">@</span><span class="n">override</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Widget</span> <span class="n">build</span><span class="p">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">Scaffold</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="nl">appBar:</span> <span class="n">AppBar</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">title:</span> <span class="kd">const</span> <span class="n">Text</span><span class="p">(</span><span class="s1">&#39;ChatScreen&#39;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="nl">body:</span> <span class="n">Center</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="nl">child:</span> <span class="n">Text</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">          <span class="n">loggedUser</span><span class="p">.</span><span class="n">toString</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="p">),</span>
+</span></span><span class="line"><span class="cl">      <span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>그러면 이제 등록을 위한 기능은 모두 마쳤습니다!</p>
+<p>AVD를 다시 시작해봅시다!</p>
+<hr>
+<h4 id="사용자-signin-기능-구현">사용자 SignIn 기능 구현</h4>
+<p>로그인 기능을 하려면 다음과 같이 만들면 됩니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dart" data-lang="dart"><span class="line"><span class="cl"><span class="p">(</span><span class="n">lib</span> <span class="o">&gt;</span> <span class="n">screens</span> <span class="o">&gt;</span> <span class="n">login_screen</span><span class="p">.</span><span class="n">dart</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="nl">child:</span> <span class="n">GestureDetector</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nl">onTap:</span> <span class="p">()</span> <span class="kd">async</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">final</span> <span class="n">newUser</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">          <span class="kd">await</span> <span class="n">_authentication</span><span class="p">.</span><span class="n">signInWithEmailAndPassword</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="nl">email:</span> <span class="n">userEmail</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nl">password:</span> <span class="n">userPassword</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">newUser</span><span class="p">.</span><span class="n">user</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="n">Navigator</span><span class="p">.</span><span class="n">push</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">context</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">MaterialPageRoute</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">              <span class="nl">builder:</span> <span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="kd">const</span> <span class="n">ChatScreen</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">              <span class="p">},</span>
+</span></span><span class="line"><span class="cl">            <span class="p">),</span>
+</span></span><span class="line"><span class="cl">          <span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">print</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h4 id="sdk-version-에러">Sdk version 에러</h4>
+<p><strong>minSdkVersion 16 cannot be smaller than version 19 declared in library</strong></p>
+<p>간혹 이런 에러가 뜨게되는데 이건 아래 글에서 해결하시면 되겠습니다.</p>
+<blockquote>
+<p><a class="link" href="https://myeongcode.github.io/p/flutter-sdk-version-%EC%98%A4%EB%A5%98/"  target="_blank" rel="noopener"
+    >https://myeongcode.github.io/p/flutter-sdk-version-%EC%98%A4%EB%A5%98/</a></p>
+</blockquote>
+<hr>
+<h3 id="계정-서버-생성">계정 서버 생성</h3>
+<p>우리는 유저인증에 관련된 서버를 필요로하기때문에</p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233705233-ee7ee290-9877-41a2-9e27-56997fcfd87d.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>왼쪽 탭에서 <code>빌드 &gt; Authentication</code>으로 이동해줍니다.</p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233766774-1b174f57-3080-42d9-81a8-53260b3298e9.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>시작하기를 눌러줍니다.</p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233766813-d2de1fc8-cc79-4a16-b470-6b3e489dbdf0.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>다양한 기능이 있는데 우리는 <code>이메일/비밀번호</code> 로 기능을 만들어주겠습니다.</p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233766844-d51ce71a-1b96-470e-b889-97487eb187ec.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>여기서 <code>이메일/비밀번호</code>의 사용설정을 체크해주고 저장을 누릅니다.</p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233766911-8f33e291-a316-440b-909a-985c9aed06f9.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>사용설정을 마쳤습니다!!</p>
+<p>그리고 <code>User</code>탭으로 한번 가보면 아직 사용자로 등록하지 않았으니 아무것도 뜨지 않을 겁니다.</p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233766956-bfdc5c36-95a5-452b-848c-797a00d07f09.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233768196-fb542b83-508b-4261-acb6-210d35015874.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>한번 눌러볼까요?</p>
+<p><img src="https://user-images.githubusercontent.com/67165016/233768267-5350ac3f-50bb-4c29-81f2-d3df674ab44a.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<blockquote>
+<p>^오^ 성공이네요</p>
+</blockquote>
+<h2 id="참고자료">참고자료</h2>
+<p><a class="link" href="https://www.youtube.com/watch?v=se6wKk-w8lI&amp;list=PLQt_pzi-LLfoOpp3b-pnnLXgYpiFEftLB&amp;index=26"  target="_blank" rel="noopener"
+    >https://www.youtube.com/watch?v=se6wKk-w8lI&list=PLQt_pzi-LLfoOpp3b-pnnLXgYpiFEftLB&index=26</a></p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/dart/">dart</a>
+        
+            <a href="/tags/flutter/">flutter</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/flutter-sdk-version-%EC%98%A4%EB%A5%98/">
+        
+        
+            <div class="article-image">
+                <img src="/p/flutter-sdk-version-%EC%98%A4%EB%A5%98/flutter-logo.5cce8723bf1bf4f93e5e4dd3de2c5c1b_hud4db78cc4099f0118a23ad8c4eb3c315_171298_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post [Flutter] sdk version 오류"
+                        
+                        data-hash="md5-XM6HI78b9Pk&#43;Xk3T3ixcGw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Flutter] sdk version 오류</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/flutter-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%A0%8C%EB%8D%94%EB%A7%81-%EC%98%A4%EB%A5%98-1/">
+        
+        
+            <div class="article-image">
+                <img src="/p/flutter-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%A0%8C%EB%8D%94%EB%A7%81-%EC%98%A4%EB%A5%98-1/flutter-logo.5cce8723bf1bf4f93e5e4dd3de2c5c1b_hud4db78cc4099f0118a23ad8c4eb3c315_171298_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post [Flutter] 이미지 렌더링 오류 - 1"
+                        
+                        data-hash="md5-XM6HI78b9Pk&#43;Xk3T3ixcGw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Flutter] 이미지 렌더링 오류 - 1</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/flutter-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%A0%8C%EB%8D%94%EB%A7%81-%EC%98%A4%EB%A5%98-2/">
+        
+        
+            <div class="article-image">
+                <img src="/p/flutter-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%A0%8C%EB%8D%94%EB%A7%81-%EC%98%A4%EB%A5%98-2/flutter-logo.5cce8723bf1bf4f93e5e4dd3de2c5c1b_hud4db78cc4099f0118a23ad8c4eb3c315_171298_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post [Flutter] 이미지 렌더링 오류 - 2"
+                        
+                        data-hash="md5-XM6HI78b9Pk&#43;Xk3T3ixcGw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Flutter] 이미지 렌더링 오류 - 2</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/flutter-scaffold-widget/">
+        
+        
+            <div class="article-image">
+                <img src="/p/flutter-scaffold-widget/flutter-logo.5cce8723bf1bf4f93e5e4dd3de2c5c1b_hud4db78cc4099f0118a23ad8c4eb3c315_171298_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post [Flutter] Scaffold Widget"
+                        
+                        data-hash="md5-XM6HI78b9Pk&#43;Xk3T3ixcGw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Flutter] Scaffold Widget</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/dart-flutter%EC%97%90%EC%84%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-dart%EC%96%B8%EC%96%B4%EB%9E%80/">
+        
+        
+            <div class="article-image">
+                <img src="/p/dart-flutter%EC%97%90%EC%84%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-dart%EC%96%B8%EC%96%B4%EB%9E%80/dart-logo.1c7953bcc5ad2251de154f97e886bfff_hu6ca51b6ea6e3939baa7b81d018f1cfc2_224667_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post [Dart] Flutter에서 사용하는 Dart언어란?"
+                        
+                        data-hash="md5-HHlTvMWtIlHeFU&#43;X6Ia//w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Dart] Flutter에서 사용하는 Dart언어란?</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 우명규
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
