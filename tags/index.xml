@@ -5,7 +5,15 @@
         <link>https://myeongcode.github.io/tags/</link>
         <description>Recent content in Tags on 우명규</description>
         <generator>Hugo -- gohugo.io</generator>
-        <lastBuildDate>Sat, 22 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://myeongcode.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 24 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://myeongcode.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>javascript</title>
+        <link>https://myeongcode.github.io/tags/javascript/</link>
+        <pubDate>Mon, 24 Apr 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://myeongcode.github.io/tags/javascript/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>dart</title>
         <link>https://myeongcode.github.io/tags/dart/</link>
         <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
@@ -19,14 +27,6 @@
         <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
         
         <guid>https://myeongcode.github.io/tags/flutter/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>javascript</title>
-        <link>https://myeongcode.github.io/tags/javascript/</link>
-        <pubDate>Sat, 22 Apr 2023 00:00:00 +0000</pubDate>
-        
-        <guid>https://myeongcode.github.io/tags/javascript/</guid>
         <description></description>
         </item>
         <item>
