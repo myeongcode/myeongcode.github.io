@@ -3,7 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://myeongcode.github.io/</loc>
-    <lastmod>2023-05-12T00:00:00+00:00</lastmod>
+    <lastmod>2023-06-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://myeongcode.github.io/p/jira-jira%EA%B0%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C/</loc>
+    <lastmod>2023-06-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://myeongcode.github.io/categories/</loc>
+    <lastmod>2023-06-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://myeongcode.github.io/tags/jira/</loc>
+    <lastmod>2023-06-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://myeongcode.github.io/post/</loc>
+    <lastmod>2023-06-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://myeongcode.github.io/tags/</loc>
+    <lastmod>2023-06-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://myeongcode.github.io/categories/web/</loc>
+    <lastmod>2023-06-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://myeongcode.github.io/p/programmers-%EB%AC%B8%EC%9E%90-%EB%B0%98%EB%B3%B5-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/</loc>
     <lastmod>2023-05-12T00:00:00+00:00</lastmod>
@@ -14,16 +32,7 @@
     <loc>https://myeongcode.github.io/categories/algorithm/</loc>
     <lastmod>2023-05-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://myeongcode.github.io/categories/</loc>
-    <lastmod>2023-05-12T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://myeongcode.github.io/tags/javascript/</loc>
-    <lastmod>2023-05-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://myeongcode.github.io/post/</loc>
-    <lastmod>2023-05-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://myeongcode.github.io/tags/</loc>
     <lastmod>2023-05-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://myeongcode.github.io/p/programmers-%EB%AC%B8%EC%9E%90%EC%97%B4-%EB%92%A4%EC%A7%91%EA%B8%B0/</loc>
@@ -156,7 +165,5 @@
     <lastmod>2020-10-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://myeongcode.github.io/search/</loc>
-  </url><url>
-    <loc>https://myeongcode.github.io/categories/web/</loc>
   </url>
 </urlset>

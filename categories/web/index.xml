@@ -4,6 +4,142 @@
         <title>Web on 우명규</title>
         <link>https://myeongcode.github.io/categories/web/</link>
         <description>Recent content in Web on 우명규</description>
-        <generator>Hugo -- gohugo.io</generator><atom:link href="https://myeongcode.github.io/categories/web/index.xml" rel="self" type="application/rss+xml" />
+        <generator>Hugo -- gohugo.io</generator>
+        <lastBuildDate>Sat, 03 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://myeongcode.github.io/categories/web/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>[JIRA] JIRA가 무엇일까?</title>
+        <link>https://myeongcode.github.io/p/jira-jira%EA%B0%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C/</link>
+        <pubDate>Sat, 03 Jun 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://myeongcode.github.io/p/jira-jira%EA%B0%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C/</guid>
+        <description>&lt;img src="https://myeongcode.github.io/p/jira-jira%EA%B0%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C/jira-logo.png" alt="Featured image of post [JIRA] JIRA가 무엇일까?" /&gt;&lt;h2 id=&#34;jira란&#34;&gt;JIRA란?&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;프로젝트에서 &lt;strong&gt;애자일 방법론&lt;/strong&gt;을 적용할 때의 프로젝트 관리 협업 툴&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;가장-기본이-되는-단위--이슈issue&#34;&gt;가장 기본이 되는 단위 : 이슈(Issue)&lt;/h3&gt;
+&lt;p&gt;⇒ 이슈란 &lt;strong&gt;팀이 식별하고 있는 작업 항목의 단위&lt;/strong&gt;로서, &lt;strong&gt;하나의 업무 당 하나의 이슈가 배정&lt;/strong&gt;됩니다.&lt;/p&gt;
+&lt;p&gt;이슈를 등록하고 관리하는 과정에서 우리는 업무계획을 수립할 수 있고, 업무 사이클에 맞게 내게 주어진 일을 진행하고 완료할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;지라의 이슈에는 다양한 타입이 있습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;에픽(Epic) : 정해진 업무에 따라 다른 이슈를 포함한 조금 더 큰 범주의 이슈&lt;/li&gt;
+&lt;li&gt;스토리(Story) : 사용자의 요구사항을 담은 스토리&lt;/li&gt;
+&lt;li&gt;태스크(Task)&lt;/li&gt;
+&lt;li&gt;버그(Bug)&lt;/li&gt;
+&lt;li&gt;등등&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/myeongcode/myeongcode.github.io/assets/67165016/328fc486-8bd6-4571-a3e8-cbd21764b791&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Untitled&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;이슈를 만드는 방법은 지라 상단 메뉴바에서 만들기(Create) 버튼을 클릭하면 이슈를 생성할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;이 때, &lt;strong&gt;각 이슈별로 이슈 key(프로젝트키-이슈숫자형식)가 자동으로 생성&lt;/strong&gt;되는데 이 키를 구성원들과 공유하여 어떤 이슈에 대해 이야기를 하는지 싱크를 맞출 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;각 이슈의 내용을 뜻하는 필드(Field)를 잘 구성하고 작성&lt;/strong&gt;해야 업무에 있어 꼭 필요한 정보를 기록으로 남기고, 구성원 간에 오해없이 같은 내용을 공유할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;이슈에는 다양할 필드가 존재하는데, 지라를 활용할 때 가장 필수적인 필드 항목 세 가지만 꼽자면&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;요약&lt;/strong&gt; : 이슈의 제목
+&lt;ul&gt;
+&lt;li&gt;해당 업무를 가장 잘 정리한 문장 혹은 문구를 작성해야, 전체 업무를 파악할 때 어려움이 없습니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;담당자&lt;/strong&gt; : 해당 업무를 진행할 담당자
+&lt;ul&gt;
+&lt;li&gt;지라에서는 &lt;strong&gt;한 이슈 당 하나의 담당자만 할당&lt;/strong&gt;할 수 있는데 이는 &lt;strong&gt;R&amp;amp;R(Role and Responsibilities : 업무분장)을 명확&lt;/strong&gt;하게 하고 누가 어떤 업무를 진행하는지 알 수 있는 가시성을 확보&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;담당자가 여러 명일 경우&lt;/strong&gt;에는 하위작업(Sub Task)를 활용하거나, 관련자(Stakeholder)필드를 구성하면 됩니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;우선순위&lt;/strong&gt; : 업무의 긴급성과 중요성
+&lt;ul&gt;
+&lt;li&gt;High / Medium / Low 등으로 나누어 &lt;strong&gt;중요하고 긴급한 업무와 그렇지 않은 업무를 구분&lt;/strong&gt;할 수 있습니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;💡 업무 히스토리 추적을 위해 필드별로 업데이트 되는 이벤트 내역이 생길때마다 코멘트를 남기는 것을 추천합니다. 또, 이슈 삭제 권한을 일반 유저에게 주지 않는 것이 좋습니다. 커뮤니케이션이 잘 되고, 신뢰와 협업을 기반으로 일을 한다면 이슈를 삭제할 이유가 없습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;업무-시각화-공간--프로젝트project&#34;&gt;업무 시각화 공간 : 프로젝트(Project)&lt;/h3&gt;
+&lt;p&gt;⇒ 지라에서 가장 기본이 되는 단위가 이슈라면, **연관된 이슈들의 집합이 바로 프로젝트(Project)**입니다.&lt;/p&gt;
+&lt;p&gt;하나의 이슈는 단 하나의 프로젝트에만 소속하기 때문에, 프로젝트는 각 팀이 진행해야 하는 할 일 리스트하고도 볼 수 있습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;지라 프로젝트 &lt;strong&gt;칸반 보드&lt;/strong&gt;
+&lt;img src=&#34;https://github.com/myeongcode/myeongcode.github.io/assets/67165016/ddcd57eb-8a82-4d9e-ae3f-94566a36add3&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Untitled&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;지라 프로젝트 &lt;strong&gt;스크럼 보드&lt;/strong&gt;
+&lt;img src=&#34;https://github.com/myeongcode/myeongcode.github.io/assets/67165016/c78ccc76-5802-4075-a909-3add138b107c&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Untitled&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;지라 프로젝트 &lt;strong&gt;로드맵&lt;/strong&gt;
+&lt;img src=&#34;https://github.com/myeongcode/myeongcode.github.io/assets/67165016/b272458b-f187-42ce-87c8-e83ecdc5f7af&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Untitled&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;알아야-할-중요한-jira-핵심-용어&#34;&gt;알아야 할 중요한 JIRA 핵심 용어&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;백로그&lt;/strong&gt; : 우선순위를 정해야하는 집중 작업 목록&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;스토리 포인트&lt;/strong&gt; : 노력, 복잡성 및 위험에 대한 0-8 척도에 의존&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;스크럼 보드&lt;/strong&gt; : 클라이언트 중심의 모든 프로젝트에 사용되며, 일반적으로 할 일, 진행 중, 완료된 컬럼과 같은 주요 요소로 구성됩니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;칸반 보드&lt;/strong&gt; : 주로 제품과 관련된 업무에 사용&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;레이블&lt;/strong&gt; : 레이블은 모든 문제를 분류하는 데 필요합니다. 또한 문제를 빠르게 찾는데 도움이 됩니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;워크플로&lt;/strong&gt; : 워크플로는 보드 열 사이에서 스토리를 이동합니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;스토리&lt;/strong&gt; : 사용자 스토리에는 요청에 필요한 모든 것이 포함됩니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;작업 로그&lt;/strong&gt; : 수행된 모든 작업의 목록을 포함합니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;디시젼 로그&lt;/strong&gt; : 내린 모든 결정의 목록을 포함합니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;에픽&lt;/strong&gt; : 작업의 큰 덩어리를 더 작고 더 쉬운 단계로 나눕니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;위험 로그&lt;/strong&gt; : 프로젝트 작업 수행 중 식별된 위험 목록&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;기술적 작업&lt;/strong&gt; : 프로젝트의 작은 작업&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;jira의-장점&#34;&gt;JIRA의 장점&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;워크플로 가시성 향상&lt;/strong&gt;
+프로세스를 자동화하고 실시간으로 진행 상황을 추적하여 워크플로에 대한 더 나은 가시성을 제공&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;시간 추적&lt;/strong&gt;
+각 작업에 소요된 시간을 자동으로 기록하며, 프로세스를 최적화하고 효율성을 개선하며 리소스를 더 잘 활용하는 데 사용&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;생산성 향상&lt;/strong&gt;
+유연한 문제 추적 시스템을 통해 작업을 보다 효율적으로 추적 및 관리&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;jira의-단점&#34;&gt;JIRA의 단점&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;초보자가 쓰기에는 복잡함&lt;/strong&gt;
+초보자가 사용할 때의 UI가 직관적이지 않음&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;커뮤니케이션의 부재&lt;/strong&gt;
+프로젝트 관리를 위한 훌룡한 도구이지만 커뮤니케이션 기능이 부족함&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;reference&#34;&gt;Reference&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blog.jandi.com/ko/2022/03/31/how-to-jira-like-a-pro/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;일 잘하는 팀의 실전 ‘지라(Jira)’ 활용법 - 업무용 협업툴 JANDI 블로그&lt;/a&gt;&lt;/p&gt;</description>
+        </item>
+        
     </channel>
 </rss>
