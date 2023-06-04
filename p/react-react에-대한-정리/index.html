@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='프로젝트 관리 협업 툴 JIRA에 대해서 알아보자'>
-<title>[JIRA] JIRA가 무엇일까?</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='잃었던 React의 감을 다시 한번 살려보자!'>
+<title>[React] React에 대한 정리</title>
 
-<link rel='canonical' href='https://myeongcode.github.io/p/jira-jira%EA%B0%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C/'>
+<link rel='canonical' href='https://myeongcode.github.io/p/react-react%EC%97%90-%EB%8C%80%ED%95%9C-%EC%A0%95%EB%A6%AC/'>
 
-<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='[JIRA] JIRA가 무엇일까?'>
-<meta property='og:description' content='프로젝트 관리 협업 툴 JIRA에 대해서 알아보자'>
-<meta property='og:url' content='https://myeongcode.github.io/p/jira-jira%EA%B0%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C/'>
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='[React] React에 대한 정리'>
+<meta property='og:description' content='잃었던 React의 감을 다시 한번 살려보자!'>
+<meta property='og:url' content='https://myeongcode.github.io/p/react-react%EC%97%90-%EB%8C%80%ED%95%9C-%EC%A0%95%EB%A6%AC/'>
 <meta property='og:site_name' content='우명규'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='jira' /><meta property='article:published_time' content='2023-06-03T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-06-03T00:00:00&#43;00:00'/><meta property='og:image' content='https://myeongcode.github.io/p/jira-jira%EA%B0%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C/jira-logo.png' />
-<meta name="twitter:title" content="[JIRA] JIRA가 무엇일까?">
-<meta name="twitter:description" content="프로젝트 관리 협업 툴 JIRA에 대해서 알아보자"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://myeongcode.github.io/p/jira-jira%EA%B0%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C/jira-logo.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='react' /><meta property='article:published_time' content='2023-06-04T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-06-04T00:00:00&#43;00:00'/><meta property='og:image' content='https://myeongcode.github.io/p/react-react%EC%97%90-%EB%8C%80%ED%95%9C-%EC%A0%95%EB%A6%AC/react-logo.png' />
+<meta name="twitter:title" content="[React] React에 대한 정리">
+<meta name="twitter:description" content="잃었던 React의 감을 다시 한번 살려보자!"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://myeongcode.github.io/p/react-react%EC%97%90-%EB%8C%80%ED%95%9C-%EC%A0%95%EB%A6%AC/react-logo.png' />
     </head>
     <body class="
     article-page
@@ -230,16 +230,33 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#jira란">JIRA란?</a>
+    <li><a href="#서론-">서론 🌐</a></li>
+    <li><a href="#react란">React란?</a>
       <ol>
-        <li><a href="#가장-기본이-되는-단위--이슈issue">가장 기본이 되는 단위 : 이슈(Issue)</a></li>
-        <li><a href="#업무-시각화-공간--프로젝트project">업무 시각화 공간 : 프로젝트(Project)</a></li>
-        <li><a href="#알아야-할-중요한-jira-핵심-용어">알아야 할 중요한 JIRA 핵심 용어</a></li>
-        <li><a href="#jira의-장점">JIRA의 장점</a></li>
-        <li><a href="#jira의-단점">JIRA의 단점</a></li>
+        <li><a href="#spasingle-page-application">SPA(Single Page Application)</a></li>
       </ol>
     </li>
-    <li><a href="#reference">Reference</a></li>
+    <li><a href="#react의-필요성">React의 필요성</a>
+      <ol>
+        <li><a href="#spa을-만들-때-좋습니다">SPA을 만들 때 좋습니다.</a></li>
+        <li><a href="#재사용이-편리합니다">재사용이 편리합니다.</a></li>
+      </ol>
+    </li>
+    <li><a href="#react-특징">React 특징</a>
+      <ol>
+        <li><a href="#jsx">JSX</a></li>
+        <li><a href="#data-flowflux">Data Flow(Flux)</a></li>
+        <li><a href="#component-기반-구조">Component 기반 구조</a></li>
+        <li><a href="#virtual-dom-document-object-model">Virtual DOM (Document Object Model)</a></li>
+        <li><a href="#props--state">Props &amp; State</a></li>
+      </ol>
+    </li>
+    <li><a href="#react-장단점">React 장단점</a>
+      <ol>
+        <li><a href="#react의-장점">React의 장점</a></li>
+        <li><a href="#react의-단점">React의 단점</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -254,13 +271,13 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/jira-jira%EA%B0%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C/">
-                <img src="/p/jira-jira%EA%B0%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C/jira-logo_hu5a45f1008d9b0d027dd43621df4b7488_246608_800x0_resize_box_3.png"
-                        srcset="/p/jira-jira%EA%B0%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C/jira-logo_hu5a45f1008d9b0d027dd43621df4b7488_246608_800x0_resize_box_3.png 800w, /p/jira-jira%EA%B0%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C/jira-logo_hu5a45f1008d9b0d027dd43621df4b7488_246608_1600x0_resize_box_3.png 1600w"
+            <a href="/p/react-react%EC%97%90-%EB%8C%80%ED%95%9C-%EC%A0%95%EB%A6%AC/">
+                <img src="/p/react-react%EC%97%90-%EB%8C%80%ED%95%9C-%EC%A0%95%EB%A6%AC/react-logo_hua3ebe5898a4e39adc84559693d29cf1f_231564_800x0_resize_box_3.png"
+                        srcset="/p/react-react%EC%97%90-%EB%8C%80%ED%95%9C-%EC%A0%95%EB%A6%AC/react-logo_hua3ebe5898a4e39adc84559693d29cf1f_231564_800x0_resize_box_3.png 800w, /p/react-react%EC%97%90-%EB%8C%80%ED%95%9C-%EC%A0%95%EB%A6%AC/react-logo_hua3ebe5898a4e39adc84559693d29cf1f_231564_1600x0_resize_box_3.png 1600w"
                         width="800" 
-                        height="365" 
+                        height="416" 
                         loading="lazy"
-                        alt="Featured image of post [JIRA] JIRA가 무엇일까?" />
+                        alt="Featured image of post [React] React에 대한 정리" />
                 
             </a>
         </div>
@@ -279,12 +296,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/jira-jira%EA%B0%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C/">[JIRA] JIRA가 무엇일까?</a>
+            <a href="/p/react-react%EC%97%90-%EB%8C%80%ED%95%9C-%EC%A0%95%EB%A6%AC/">[React] React에 대한 정리</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            프로젝트 관리 협업 툴 JIRA에 대해서 알아보자
+            잃었던 React의 감을 다시 한번 살려보자!
         </h3>
         
     </div>
@@ -305,7 +322,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Jun 03, 2023</time>
+                <time class="article-time--published">Jun 04, 2023</time>
             </div>
         
 
@@ -335,134 +352,136 @@
     <section class="article-content">
     
     
-    <h2 id="jira란">JIRA란?</h2>
+    <h2 id="서론-">서론 🌐</h2>
+<p>React에 대해서 정확히 설명할 수 없었던 나이기에 React를 사용했던 경험을 떠올려 다시한번 복습을 하고 정확한 React를 알기 위해 정리를 해보겠습니다.</p>
+<h2 id="react란">React란?</h2>
 <blockquote>
-<p>프로젝트에서 <strong>애자일 방법론</strong>을 적용할 때의 프로젝트 관리 협업 툴</p>
+<p>React는 웹 프레임워크로 자바스크립트 라이브러리의 하나로서 특히 <strong>SPA(Single Page Application)을 위한 사용자 인터페이스를 구축</strong>하는데 사용됩니다.</p>
 </blockquote>
-<h3 id="가장-기본이-되는-단위--이슈issue">가장 기본이 되는 단위 : 이슈(Issue)</h3>
-<p>⇒ 이슈란 <strong>팀이 식별하고 있는 작업 항목의 단위</strong>로서, <strong>하나의 업무 당 하나의 이슈가 배정</strong>됩니다.</p>
-<p>이슈를 등록하고 관리하는 과정에서 우리는 업무계획을 수립할 수 있고, 업무 사이클에 맞게 내게 주어진 일을 진행하고 완료할 수 있습니다.</p>
-<p>지라의 이슈에는 다양한 타입이 있습니다.</p>
-<ul>
-<li>에픽(Epic) : 정해진 업무에 따라 다른 이슈를 포함한 조금 더 큰 범주의 이슈</li>
-<li>스토리(Story) : 사용자의 요구사항을 담은 스토리</li>
-<li>태스크(Task)</li>
-<li>버그(Bug)</li>
-<li>등등</li>
-</ul>
-<p><img src="https://github.com/myeongcode/myeongcode.github.io/assets/67165016/328fc486-8bd6-4571-a3e8-cbd21764b791"
-	
-	
-	
-	loading="lazy"
-	
-		alt="Untitled"
-	
-	
-></p>
-<p>이슈를 만드는 방법은 지라 상단 메뉴바에서 만들기(Create) 버튼을 클릭하면 이슈를 생성할 수 있습니다.</p>
-<p>이 때, <strong>각 이슈별로 이슈 key(프로젝트키-이슈숫자형식)가 자동으로 생성</strong>되는데 이 키를 구성원들과 공유하여 어떤 이슈에 대해 이야기를 하는지 싱크를 맞출 수 있습니다.</p>
-<p><strong>각 이슈의 내용을 뜻하는 필드(Field)를 잘 구성하고 작성</strong>해야 업무에 있어 꼭 필요한 정보를 기록으로 남기고, 구성원 간에 오해없이 같은 내용을 공유할 수 있습니다.</p>
-<p>이슈에는 다양할 필드가 존재하는데, 지라를 활용할 때 가장 필수적인 필드 항목 세 가지만 꼽자면</p>
-<ul>
-<li><strong>요약</strong> : 이슈의 제목
-<ul>
-<li>해당 업무를 가장 잘 정리한 문장 혹은 문구를 작성해야, 전체 업무를 파악할 때 어려움이 없습니다.</li>
-</ul>
-</li>
-<li><strong>담당자</strong> : 해당 업무를 진행할 담당자
-<ul>
-<li>지라에서는 <strong>한 이슈 당 하나의 담당자만 할당</strong>할 수 있는데 이는 <strong>R&amp;R(Role and Responsibilities : 업무분장)을 명확</strong>하게 하고 누가 어떤 업무를 진행하는지 알 수 있는 가시성을 확보</li>
-<li><strong>담당자가 여러 명일 경우</strong>에는 하위작업(Sub Task)를 활용하거나, 관련자(Stakeholder)필드를 구성하면 됩니다.</li>
-</ul>
-</li>
-<li><strong>우선순위</strong> : 업무의 긴급성과 중요성
-<ul>
-<li>High / Medium / Low 등으로 나누어 <strong>중요하고 긴급한 업무와 그렇지 않은 업무를 구분</strong>할 수 있습니다.</li>
-</ul>
-</li>
-</ul>
+<p>즉, 현재 많이 활용되고 있는, 웹/앱의 View를 개발할 수 있는 인기 라이브러리죠</p>
+<h3 id="spasingle-page-application">SPA(Single Page Application)</h3>
 <blockquote>
-<p>💡 업무 히스토리 추적을 위해 필드별로 업데이트 되는 이벤트 내역이 생길때마다 코멘트를 남기는 것을 추천합니다. 또, 이슈 삭제 권한을 일반 유저에게 주지 않는 것이 좋습니다. 커뮤니케이션이 잘 되고, 신뢰와 협업을 기반으로 일을 한다면 이슈를 삭제할 이유가 없습니다.</p>
+<p>단일 페이지 어플리케이션</p>
 </blockquote>
-<h3 id="업무-시각화-공간--프로젝트project">업무 시각화 공간 : 프로젝트(Project)</h3>
-<p>⇒ 지라에서 가장 기본이 되는 단위가 이슈라면, **연관된 이슈들의 집합이 바로 프로젝트(Project)**입니다.</p>
-<p>하나의 이슈는 단 하나의 프로젝트에만 소속하기 때문에, 프로젝트는 각 팀이 진행해야 하는 할 일 리스트하고도 볼 수 있습니다.</p>
+<p>즉, <strong>어떠한 웹 사이트의 전체 페이지를 하나의 페이지에 담아 동적으로 화면을 변경해 표시하는 기술</strong></p>
+<p>더 자세한 내용은 아래 링크에서 확인</p>
+<p><a class="link" href="https://jongminfire.dev/spa-single-page-application-%EB%9E%80"  target="_blank" rel="noopener"
+    >JONGMINFIRE.DEV님의 &ldquo;SPA(Single Page Application)란?&rdquo;</a></p>
+<h2 id="react의-필요성">React의 필요성</h2>
+<p>사실은 React를 사용하지 않아도, html과 css, javasciprt를 이용해서 웹 페이지를 만들 수 있지만, react를 이용하면 사용자와 상호작용할 수 있는 동적인 UI를 쉽게 만들 수 있습니다.</p>
+<h3 id="spa을-만들-때-좋습니다">SPA을 만들 때 좋습니다.</h3>
+<blockquote>
+<p>모바일 앱처럼 전체화면 새로고침 없이 부드럽게 만들고 싶을 때 사용합니다.</p>
+</blockquote>
+<h3 id="재사용이-편리합니다">재사용이 편리합니다.</h3>
+<blockquote>
+<p>html을 함수, array, object 이런 곳에 보관하고 재사용할 수 있어서 큰 프로젝트 일 수록 html 관리가 편리해집니다.
+또, <strong>ReactNative를 쓰면 같은 리액트 문법으로 모바일 앱개발도 가능</strong>합니다.</p>
+</blockquote>
+<h2 id="react-특징">React 특징</h2>
+<h3 id="jsx">JSX</h3>
+<p>React에서는 템플릿에 일반 JavaScript를 사용하는 대신 JSX를 사용합니다. JSX는 <strong>HTML 인용을 허용하고 이러한 HTML 태그 구문을 사용하여 하위 구성 요소를 렌더링</strong>하는 간단한 JavaScript입니다.</p>
+<h3 id="data-flowflux">Data Flow(Flux)</h3>
+<p>React는 데이터의 흐름이 한 방향으로만 흐르는 단방향 데이터 흐름(Flux)을 가집니다.</p>
+<p>Angular.js와 같은 양방향 데이터 바인딩은 규모가 커질수록 데이터의 흐름을 추적하기가 힘들고 복잡해지는 경향이 있어, 복잡한 앱에서도 데이터 흐름에서 일어나는 변화를 보다 예측가능할 수 있도록 단방향 흐름을 가지도록 했다고 합니다.</p>
+<h3 id="component-기반-구조">Component 기반 구조</h3>
+<blockquote>
+<p>Component는 독립적인 단위의 소프트웨어 모듈을 말합니다.
+즉, 소프트웨어를 독립적인 하나의 부품으로 만드는 방법이라고 볼 수 있습니다.</p>
+</blockquote>
+<p>React는 UI(View)를 여러 컴포넌트로 쪼개서 만듭니다.
+한 페이지 내에서도 여러 각 부분을 독립된 컴포넌트로 만들고, 이 컴포넌트를 조립해 화면을 구성합니다.</p>
+<p>컴포넌트 단위로 쪼개져있기 때문에, 전체 코드를 파악하기 상대적으로 쉽습니다. 이렇게 기능 단위, UI 단위로 캡슐화시켜 코드를 관리하기 때문에 재사용성이 높습니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-jsx" data-lang="jsx"><span class="line"><span class="cl"><span class="kr">class</span> <span class="nx">App</span> <span class="kr">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">Layout</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">Header</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">Navigation</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">Content</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">&lt;</span><span class="nt">Sidebar</span><span class="p">&gt;&lt;/</span><span class="nt">Sidebar</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">&lt;</span><span class="nt">Router</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">Content</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">Footer</span><span class="p">&gt;&lt;/</span><span class="nt">Footer</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;/</span><span class="nt">Layout</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="virtual-dom-document-object-model">Virtual DOM (Document Object Model)</h3>
+<p>원래, DOM은 html, xml, css 등을 트리 구조로 인식하고, 데이터를 객체로 간주하고 관리합니다.</p>
+<p>하지만, 페이지를 수정할 때 마다 DOM 트리를 계속 새로 그려줘야하고 수정할 데이터를 DOM에서 모두 찾아서 수정해야하기 때문에 성능과 비용적인 측면에서 손실이 큽니다.</p>
+<p>그래서 React에서는 <strong>DOM Tree 구조와 같은 구조체 Virtual DOM이라는 가상의 문서 객체 모델</strong>을 만들어 이벤트가 발생할 때 마다 Vitrual DOM을 만들고 다시 그릴 때마다 실제 DOM과 비교하고 전/후 상태를 비교해, 변경이 필요한 최소한의 변경사항만 실제 DOM에 반영해, 앱의 효율성과 속도를 개선할 수 있습니다.</p>
+<h3 id="props--state">Props &amp; State</h3>
 <ul>
 <li>
-<p>지라 프로젝트 <strong>칸반 보드</strong>
-<img src="https://github.com/myeongcode/myeongcode.github.io/assets/67165016/ddcd57eb-8a82-4d9e-ae3f-94566a36add3"
-	
-	
-	
-	loading="lazy"
-	
-		alt="Untitled"
-	
-	
-></p>
+<p>Props</p>
+<p><strong>props는 부모 컴포넌트에서 자식 컴포넌트로 전달해주는 데이터</strong>를 말합니다
+쉽게 읽기 전용 데이터라고 생각하면 될 것 같습니다. 자식 컴포넌트에서 전달받은 Props는 변경이 불가능하고 props를 전달해준 최상위 부모 컴포넌트만 props를 변경할 수 있습니다.</p>
 </li>
 <li>
-<p>지라 프로젝트 <strong>스크럼 보드</strong>
-<img src="https://github.com/myeongcode/myeongcode.github.io/assets/67165016/c78ccc76-5802-4075-a909-3add138b107c"
-	
-	
-	
-	loading="lazy"
-	
-		alt="Untitled"
-	
-	
-></p>
-</li>
-<li>
-<p>지라 프로젝트 <strong>로드맵</strong>
-<img src="https://github.com/myeongcode/myeongcode.github.io/assets/67165016/b272458b-f187-42ce-87c8-e83ecdc5f7af"
-	
-	
-	
-	loading="lazy"
-	
-		alt="Untitled"
-	
-	
-></p>
+<p>State</p>
+<p><strong>State는 컴포넌트 내부에서 선언하며 내부에서 값을 변경</strong>할 수 있습니다. state는 동적인 데이터를 다룰 때 사용하며, 사용자와의 상호작용을 통해 데이터를 동적으로 변경할 때 사용합니다. 다만, state를 바꿀 때에는 <code>[state, setState] = useState(value)</code>형식에서 <code>setState()</code>라는 함수로 변경해야합니다.</p>
 </li>
 </ul>
-<h3 id="알아야-할-중요한-jira-핵심-용어">알아야 할 중요한 JIRA 핵심 용어</h3>
+<h2 id="react-장단점">React 장단점</h2>
+<h3 id="react의-장점">React의 장점</h3>
 <ol>
-<li><strong>백로그</strong> : 우선순위를 정해야하는 집중 작업 목록</li>
-<li><strong>스토리 포인트</strong> : 노력, 복잡성 및 위험에 대한 0-8 척도에 의존</li>
-<li><strong>스크럼 보드</strong> : 클라이언트 중심의 모든 프로젝트에 사용되며, 일반적으로 할 일, 진행 중, 완료된 컬럼과 같은 주요 요소로 구성됩니다.</li>
-<li><strong>칸반 보드</strong> : 주로 제품과 관련된 업무에 사용</li>
-<li><strong>레이블</strong> : 레이블은 모든 문제를 분류하는 데 필요합니다. 또한 문제를 빠르게 찾는데 도움이 됩니다.</li>
-<li><strong>워크플로</strong> : 워크플로는 보드 열 사이에서 스토리를 이동합니다.</li>
-<li><strong>스토리</strong> : 사용자 스토리에는 요청에 필요한 모든 것이 포함됩니다.</li>
-<li><strong>작업 로그</strong> : 수행된 모든 작업의 목록을 포함합니다.</li>
-<li><strong>디시젼 로그</strong> : 내린 모든 결정의 목록을 포함합니다.</li>
-<li><strong>에픽</strong> : 작업의 큰 덩어리를 더 작고 더 쉬운 단계로 나눕니다.</li>
-<li><strong>위험 로그</strong> : 프로젝트 작업 수행 중 식별된 위험 목록</li>
-<li><strong>기술적 작업</strong> : 프로젝트의 작은 작업</li>
+<li>
+<p><strong>빠른 업데이트와 렌더링 속도</strong></p>
+<p>위에서 말했듯, React는 빠른 업데이트를 위해 Virtual DOM이라는 것을 사용하여 어떤 DOM 상태의 변경이 일어나야한다면 Vitrual DOM에서는 변경해야 할 최소한의 부분을 검색(Compute Diff)하여 검색한 부분만을 업데이트하고 렌더링하기 때문에 렌더링 속도가 상대적으로 빨라진다.</p>
+</li>
+<li>
+<p><strong>재사용성</strong></p>
+<p>리액트는 모든 페이지가 컴포넌트로 구성되어져있고 하나의 컴포넌트는 다른 여러 개의 컴포넌트로 구성되어 질 수 있습니다. 마치 레고 블록을 조립하듯 컴포넌트들을 조립해서 개발할 수 있다는 것입니다.</p>
+</li>
+<li>
+<p><strong>활발할 지식공유 및 커뮤니티</strong></p>
+<p>구글링만 해도 잘 나온다.</p>
+</li>
+<li>
+<p><strong>React Native</strong></p>
+<p>리액트 문법을 사용해서 모바일 환경도 개발할 수 있다는 장점이 있다.</p>
+</li>
 </ol>
-<h3 id="jira의-장점">JIRA의 장점</h3>
-<ul>
-<li><strong>워크플로 가시성 향상</strong>
-프로세스를 자동화하고 실시간으로 진행 상황을 추적하여 워크플로에 대한 더 나은 가시성을 제공</li>
-<li><strong>시간 추적</strong>
-각 작업에 소요된 시간을 자동으로 기록하며, 프로세스를 최적화하고 효율성을 개선하며 리소스를 더 잘 활용하는 데 사용</li>
-<li><strong>생산성 향상</strong>
-유연한 문제 추적 시스템을 통해 작업을 보다 효율적으로 추적 및 관리</li>
-</ul>
-<h3 id="jira의-단점">JIRA의 단점</h3>
-<ul>
-<li><strong>초보자가 쓰기에는 복잡함</strong>
-초보자가 사용할 때의 UI가 직관적이지 않음</li>
-<li><strong>커뮤니케이션의 부재</strong>
-프로젝트 관리를 위한 훌룡한 도구이지만 커뮤니케이션 기능이 부족함</li>
-</ul>
-<h2 id="reference">Reference</h2>
-<p><a class="link" href="https://blog.jandi.com/ko/2022/03/31/how-to-jira-like-a-pro/"  target="_blank" rel="noopener"
-    >일 잘하는 팀의 실전 ‘지라(Jira)’ 활용법 - 업무용 협업툴 JANDI 블로그</a></p>
+<h3 id="react의-단점">React의 단점</h3>
+<ol>
+<li>
+<p>IE8 이하 버전은 지원하지 않는다.</p>
+</li>
+<li>
+<p>View 이외의 기능은 직접구현하거나 라이브러리를 사용해서 구현해야하기에 javascript 배경지식이 필수 선생이다.</p>
+</li>
+<li>
+<p>데이터 모델링, 라우팅, Ajax 등 기능 지원이 안된다.</p>
+</li>
+<li>
+<p>앱의 규모가 커지면 속도가 느려진다.</p>
+</li>
+<li>
+<p>높은 상태관리 복잡도</p>
+</li>
+</ol>
 </section>
 
 
@@ -470,7 +489,7 @@
     
     <section class="article-tags">
         
-            <a href="/tags/jira/">jira</a>
+            <a href="/tags/react/">react</a>
         
     </section>
 
@@ -492,23 +511,23 @@
             
                 
 <article class="has-image">
-    <a href="/p/react-react%EC%97%90-%EB%8C%80%ED%95%9C-%EC%A0%95%EB%A6%AC/">
+    <a href="/p/jira-jira%EA%B0%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C/">
         
         
             <div class="article-image">
-                <img src="/p/react-react%EC%97%90-%EB%8C%80%ED%95%9C-%EC%A0%95%EB%A6%AC/react-logo.36cedae437ce7d8b5a8d136a0f80ae9c_hua3ebe5898a4e39adc84559693d29cf1f_231564_250x150_fill_box_smart1_3.png" 
+                <img src="/p/jira-jira%EA%B0%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C/jira-logo.d7a525bc2313bdbb39d419a06023ff0f_hu5a45f1008d9b0d027dd43621df4b7488_246608_250x150_fill_box_smart1_3.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
-                        alt="Featured image of post [React] React에 대한 정리"
+                        alt="Featured image of post [JIRA] JIRA가 무엇일까?"
                         
-                        data-hash="md5-Ns7a5DfOfYtajRNqD4CunA==">
+                        data-hash="md5-16UlvCMTvbs51BmgYCP/Dw==">
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">[React] React에 대한 정리</h2>
+            <h2 class="article-title">[JIRA] JIRA가 무엇일까?</h2>
         </div>
     </a>
 </article>

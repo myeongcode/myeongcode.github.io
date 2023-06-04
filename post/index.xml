@@ -5,7 +5,144 @@
         <link>https://myeongcode.github.io/post/</link>
         <description>Recent content in Posts on 우명규</description>
         <generator>Hugo -- gohugo.io</generator>
-        <lastBuildDate>Sat, 03 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://myeongcode.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 04 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://myeongcode.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>[React] React에 대한 정리</title>
+        <link>https://myeongcode.github.io/p/react-react%EC%97%90-%EB%8C%80%ED%95%9C-%EC%A0%95%EB%A6%AC/</link>
+        <pubDate>Sun, 04 Jun 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://myeongcode.github.io/p/react-react%EC%97%90-%EB%8C%80%ED%95%9C-%EC%A0%95%EB%A6%AC/</guid>
+        <description>&lt;img src="https://myeongcode.github.io/p/react-react%EC%97%90-%EB%8C%80%ED%95%9C-%EC%A0%95%EB%A6%AC/react-logo.png" alt="Featured image of post [React] React에 대한 정리" /&gt;&lt;h2 id=&#34;서론-&#34;&gt;서론 🌐&lt;/h2&gt;
+&lt;p&gt;React에 대해서 정확히 설명할 수 없었던 나이기에 React를 사용했던 경험을 떠올려 다시한번 복습을 하고 정확한 React를 알기 위해 정리를 해보겠습니다.&lt;/p&gt;
+&lt;h2 id=&#34;react란&#34;&gt;React란?&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;React는 웹 프레임워크로 자바스크립트 라이브러리의 하나로서 특히 &lt;strong&gt;SPA(Single Page Application)을 위한 사용자 인터페이스를 구축&lt;/strong&gt;하는데 사용됩니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;즉, 현재 많이 활용되고 있는, 웹/앱의 View를 개발할 수 있는 인기 라이브러리죠&lt;/p&gt;
+&lt;h3 id=&#34;spasingle-page-application&#34;&gt;SPA(Single Page Application)&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;단일 페이지 어플리케이션&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;즉, &lt;strong&gt;어떠한 웹 사이트의 전체 페이지를 하나의 페이지에 담아 동적으로 화면을 변경해 표시하는 기술&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;더 자세한 내용은 아래 링크에서 확인&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://jongminfire.dev/spa-single-page-application-%EB%9E%80&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;JONGMINFIRE.DEV님의 &amp;ldquo;SPA(Single Page Application)란?&amp;rdquo;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;react의-필요성&#34;&gt;React의 필요성&lt;/h2&gt;
+&lt;p&gt;사실은 React를 사용하지 않아도, html과 css, javasciprt를 이용해서 웹 페이지를 만들 수 있지만, react를 이용하면 사용자와 상호작용할 수 있는 동적인 UI를 쉽게 만들 수 있습니다.&lt;/p&gt;
+&lt;h3 id=&#34;spa을-만들-때-좋습니다&#34;&gt;SPA을 만들 때 좋습니다.&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;모바일 앱처럼 전체화면 새로고침 없이 부드럽게 만들고 싶을 때 사용합니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;재사용이-편리합니다&#34;&gt;재사용이 편리합니다.&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;html을 함수, array, object 이런 곳에 보관하고 재사용할 수 있어서 큰 프로젝트 일 수록 html 관리가 편리해집니다.
+또, &lt;strong&gt;ReactNative를 쓰면 같은 리액트 문법으로 모바일 앱개발도 가능&lt;/strong&gt;합니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;react-특징&#34;&gt;React 특징&lt;/h2&gt;
+&lt;h3 id=&#34;jsx&#34;&gt;JSX&lt;/h3&gt;
+&lt;p&gt;React에서는 템플릿에 일반 JavaScript를 사용하는 대신 JSX를 사용합니다. JSX는 &lt;strong&gt;HTML 인용을 허용하고 이러한 HTML 태그 구문을 사용하여 하위 구성 요소를 렌더링&lt;/strong&gt;하는 간단한 JavaScript입니다.&lt;/p&gt;
+&lt;h3 id=&#34;data-flowflux&#34;&gt;Data Flow(Flux)&lt;/h3&gt;
+&lt;p&gt;React는 데이터의 흐름이 한 방향으로만 흐르는 단방향 데이터 흐름(Flux)을 가집니다.&lt;/p&gt;
+&lt;p&gt;Angular.js와 같은 양방향 데이터 바인딩은 규모가 커질수록 데이터의 흐름을 추적하기가 힘들고 복잡해지는 경향이 있어, 복잡한 앱에서도 데이터 흐름에서 일어나는 변화를 보다 예측가능할 수 있도록 단방향 흐름을 가지도록 했다고 합니다.&lt;/p&gt;
+&lt;h3 id=&#34;component-기반-구조&#34;&gt;Component 기반 구조&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Component는 독립적인 단위의 소프트웨어 모듈을 말합니다.
+즉, 소프트웨어를 독립적인 하나의 부품으로 만드는 방법이라고 볼 수 있습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;React는 UI(View)를 여러 컴포넌트로 쪼개서 만듭니다.
+한 페이지 내에서도 여러 각 부분을 독립된 컴포넌트로 만들고, 이 컴포넌트를 조립해 화면을 구성합니다.&lt;/p&gt;
+&lt;p&gt;컴포넌트 단위로 쪼개져있기 때문에, 전체 코드를 파악하기 상대적으로 쉽습니다. 이렇게 기능 단위, UI 단위로 캡슐화시켜 코드를 관리하기 때문에 재사용성이 높습니다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-jsx&#34; data-lang=&#34;jsx&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kr&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;App&lt;/span&gt; &lt;span class=&#34;kr&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Component&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nx&#34;&gt;render&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;Layout&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;Header&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;Navigation&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;Content&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;Sidebar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;Sidebar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;Router&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;Content&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;Footer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;Footer&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;Layout&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;virtual-dom-document-object-model&#34;&gt;Virtual DOM (Document Object Model)&lt;/h3&gt;
+&lt;p&gt;원래, DOM은 html, xml, css 등을 트리 구조로 인식하고, 데이터를 객체로 간주하고 관리합니다.&lt;/p&gt;
+&lt;p&gt;하지만, 페이지를 수정할 때 마다 DOM 트리를 계속 새로 그려줘야하고 수정할 데이터를 DOM에서 모두 찾아서 수정해야하기 때문에 성능과 비용적인 측면에서 손실이 큽니다.&lt;/p&gt;
+&lt;p&gt;그래서 React에서는 &lt;strong&gt;DOM Tree 구조와 같은 구조체 Virtual DOM이라는 가상의 문서 객체 모델&lt;/strong&gt;을 만들어 이벤트가 발생할 때 마다 Vitrual DOM을 만들고 다시 그릴 때마다 실제 DOM과 비교하고 전/후 상태를 비교해, 변경이 필요한 최소한의 변경사항만 실제 DOM에 반영해, 앱의 효율성과 속도를 개선할 수 있습니다.&lt;/p&gt;
+&lt;h3 id=&#34;props--state&#34;&gt;Props &amp;amp; State&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Props&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;props는 부모 컴포넌트에서 자식 컴포넌트로 전달해주는 데이터&lt;/strong&gt;를 말합니다
+쉽게 읽기 전용 데이터라고 생각하면 될 것 같습니다. 자식 컴포넌트에서 전달받은 Props는 변경이 불가능하고 props를 전달해준 최상위 부모 컴포넌트만 props를 변경할 수 있습니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;State&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;State는 컴포넌트 내부에서 선언하며 내부에서 값을 변경&lt;/strong&gt;할 수 있습니다. state는 동적인 데이터를 다룰 때 사용하며, 사용자와의 상호작용을 통해 데이터를 동적으로 변경할 때 사용합니다. 다만, state를 바꿀 때에는 &lt;code&gt;[state, setState] = useState(value)&lt;/code&gt;형식에서 &lt;code&gt;setState()&lt;/code&gt;라는 함수로 변경해야합니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;react-장단점&#34;&gt;React 장단점&lt;/h2&gt;
+&lt;h3 id=&#34;react의-장점&#34;&gt;React의 장점&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;빠른 업데이트와 렌더링 속도&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;위에서 말했듯, React는 빠른 업데이트를 위해 Virtual DOM이라는 것을 사용하여 어떤 DOM 상태의 변경이 일어나야한다면 Vitrual DOM에서는 변경해야 할 최소한의 부분을 검색(Compute Diff)하여 검색한 부분만을 업데이트하고 렌더링하기 때문에 렌더링 속도가 상대적으로 빨라진다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;재사용성&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;리액트는 모든 페이지가 컴포넌트로 구성되어져있고 하나의 컴포넌트는 다른 여러 개의 컴포넌트로 구성되어 질 수 있습니다. 마치 레고 블록을 조립하듯 컴포넌트들을 조립해서 개발할 수 있다는 것입니다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;활발할 지식공유 및 커뮤니티&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;구글링만 해도 잘 나온다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;React Native&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;리액트 문법을 사용해서 모바일 환경도 개발할 수 있다는 장점이 있다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;react의-단점&#34;&gt;React의 단점&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;IE8 이하 버전은 지원하지 않는다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;View 이외의 기능은 직접구현하거나 라이브러리를 사용해서 구현해야하기에 javascript 배경지식이 필수 선생이다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;데이터 모델링, 라우팅, Ajax 등 기능 지원이 안된다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;앱의 규모가 커지면 속도가 느려진다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;높은 상태관리 복잡도&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description>
+        </item>
+        <item>
         <title>[JIRA] JIRA가 무엇일까?</title>
         <link>https://myeongcode.github.io/p/jira-jira%EA%B0%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C/</link>
         <pubDate>Sat, 03 Jun 2023 00:00:00 +0000</pubDate>
