@@ -2,18 +2,18 @@
 <html lang="" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='프로그래머스 알고리즘'>
-<title>[Programmers] 직각삼각형 출력하기</title>
+<title>[Programmers] 양꼬치</title>
 
-<link rel='canonical' href='https://myeongcode.github.io/p/programmers-%EC%A7%81%EA%B0%81%EC%82%BC%EA%B0%81%ED%98%95-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/'>
+<link rel='canonical' href='https://myeongcode.github.io/p/programmers-%EC%96%91%EA%BC%AC%EC%B9%98/'>
 
-<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='[Programmers] 직각삼각형 출력하기'>
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='[Programmers] 양꼬치'>
 <meta property='og:description' content='프로그래머스 알고리즘'>
-<meta property='og:url' content='https://myeongcode.github.io/p/programmers-%EC%A7%81%EA%B0%81%EC%82%BC%EA%B0%81%ED%98%95-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/'>
+<meta property='og:url' content='https://myeongcode.github.io/p/programmers-%EC%96%91%EA%BC%AC%EC%B9%98/'>
 <meta property='og:site_name' content='우명규'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='javascript' /><meta property='article:published_time' content='2023-05-12T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-05-12T00:00:00&#43;00:00'/><meta property='og:image' content='https://myeongcode.github.io/p/programmers-%EC%A7%81%EA%B0%81%EC%82%BC%EA%B0%81%ED%98%95-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/program-logo.jpg' />
-<meta name="twitter:title" content="[Programmers] 직각삼각형 출력하기">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='javascript' /><meta property='article:published_time' content='2023-07-21T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-07-21T00:00:00&#43;00:00'/><meta property='og:image' content='https://myeongcode.github.io/p/programmers-%EC%96%91%EA%BC%AC%EC%B9%98/program-logo.jpg' />
+<meta name="twitter:title" content="[Programmers] 양꼬치">
 <meta name="twitter:description" content="프로그래머스 알고리즘"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://myeongcode.github.io/p/programmers-%EC%A7%81%EA%B0%81%EC%82%BC%EA%B0%81%ED%98%95-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/program-logo.jpg' />
+    <meta name="twitter:image" content='https://myeongcode.github.io/p/programmers-%EC%96%91%EA%BC%AC%EC%B9%98/program-logo.jpg' />
     </head>
     <body class="
     article-page
@@ -227,18 +227,7 @@
             <nav id="TableOfContents">
   <ol>
     <li><a href="#문제">문제</a></li>
-    <li><a href="#풀이">풀이</a>
-      <ol>
-        <li><a href="#readline이란">readline이란?</a></li>
-        <li><a href="#readline-사용법">readline 사용법</a>
-          <ol>
-            <li><a href="#모듈-불러오기">모듈 불러오기</a></li>
-            <li><a href="#interface-객체-만들기">interface 객체 만들기</a></li>
-            <li><a href="#입출력-코드-작성하기">입출력 코드 작성하기</a></li>
-          </ol>
-        </li>
-      </ol>
-    </li>
+    <li><a href="#풀이">풀이</a></li>
   </ol>
 </nav>
         </div>
@@ -253,13 +242,13 @@
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/programmers-%EC%A7%81%EA%B0%81%EC%82%BC%EA%B0%81%ED%98%95-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/">
-                <img src="/p/programmers-%EC%A7%81%EA%B0%81%EC%82%BC%EA%B0%81%ED%98%95-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/program-logo_hud53099fb9da63a7d59936d9937850c96_17100_800x0_resize_q75_box.jpg"
-                        srcset="/p/programmers-%EC%A7%81%EA%B0%81%EC%82%BC%EA%B0%81%ED%98%95-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/program-logo_hud53099fb9da63a7d59936d9937850c96_17100_800x0_resize_q75_box.jpg 800w, /p/programmers-%EC%A7%81%EA%B0%81%EC%82%BC%EA%B0%81%ED%98%95-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/program-logo_hud53099fb9da63a7d59936d9937850c96_17100_1600x0_resize_q75_box.jpg 1600w"
+            <a href="/p/programmers-%EC%96%91%EA%BC%AC%EC%B9%98/">
+                <img src="/p/programmers-%EC%96%91%EA%BC%AC%EC%B9%98/program-logo_hud53099fb9da63a7d59936d9937850c96_17100_800x0_resize_q75_box.jpg"
+                        srcset="/p/programmers-%EC%96%91%EA%BC%AC%EC%B9%98/program-logo_hud53099fb9da63a7d59936d9937850c96_17100_800x0_resize_q75_box.jpg 800w, /p/programmers-%EC%96%91%EA%BC%AC%EC%B9%98/program-logo_hud53099fb9da63a7d59936d9937850c96_17100_1600x0_resize_q75_box.jpg 1600w"
                         width="800" 
                         height="400" 
                         loading="lazy"
-                        alt="Featured image of post [Programmers] 직각삼각형 출력하기" />
+                        alt="Featured image of post [Programmers] 양꼬치" />
                 
             </a>
         </div>
@@ -278,7 +267,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/programmers-%EC%A7%81%EA%B0%81%EC%82%BC%EA%B0%81%ED%98%95-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/">[Programmers] 직각삼각형 출력하기</a>
+            <a href="/p/programmers-%EC%96%91%EA%BC%AC%EC%B9%98/">[Programmers] 양꼬치</a>
         </h2>
     
         
@@ -304,7 +293,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">May 12, 2023</time>
+                <time class="article-time--published">Jul 21, 2023</time>
             </div>
         
 
@@ -319,7 +308,7 @@
 
 
                 <time class="article-time--reading">
-                    2 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -335,7 +324,7 @@
     
     
     <h2 id="문제">문제</h2>
-<p><img src="https://github.com/myeongcode/blog/assets/67165016/32c457b0-dd1b-43f3-904f-bc9cef4bd280"
+<p><img src="https://github.com/myeongcode/blog/assets/67165016/5ea17c15-287a-489d-8ccf-3d69e64c1408"
 	
 	
 	
@@ -369,118 +358,33 @@
 </span><span class="lnt">19
 </span><span class="lnt">20
 </span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="cm">/*
-</span></span></span><span class="line"><span class="cl"><span class="cm">  [programmers / 직각삼각형 출력하기]
+</span></span></span><span class="line"><span class="cl"><span class="cm">  [programmers / 양꼬치]
 </span></span></span><span class="line"><span class="cl"><span class="cm">
-</span></span></span><span class="line"><span class="cl"><span class="cm">  입력 #1
-</span></span></span><span class="line"><span class="cl"><span class="cm">
-</span></span></span><span class="line"><span class="cl"><span class="cm">  3
-</span></span></span><span class="line"><span class="cl"><span class="cm">
-</span></span></span><span class="line"><span class="cl"><span class="cm">  출력 #1
-</span></span></span><span class="line"><span class="cl"><span class="cm">
-</span></span></span><span class="line"><span class="cl"><span class="cm">  *
-</span></span></span><span class="line"><span class="cl"><span class="cm">  **
-</span></span></span><span class="line"><span class="cl"><span class="cm">  ***
+</span></span></span><span class="line"><span class="cl"><span class="cm">  n	k	result
+</span></span></span><span class="line"><span class="cl"><span class="cm">  10	3	124,000
+</span></span></span><span class="line"><span class="cl"><span class="cm">  64	6	768,000
 </span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">readline</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;readline&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">rl</span> <span class="o">=</span> <span class="nx">readline</span><span class="p">.</span><span class="nx">createInterface</span><span class="p">({</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">input</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdin</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">output</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">solution</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="nx">k</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">let</span> <span class="nx">lambSkewers</span> <span class="o">=</span> <span class="mi">12000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">let</span> <span class="nx">drink</span> <span class="o">=</span> <span class="mi">2000</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">let</span> <span class="nx">input</span> <span class="o">=</span> <span class="p">[];</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">let</span> <span class="nx">serviceDrink</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">n</span> <span class="o">/</span> <span class="mi">10</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">lambSkewers</span> <span class="o">*=</span> <span class="nx">n</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">k</span> <span class="o">-=</span> <span class="nx">serviceDrink</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">drink</span> <span class="o">*=</span> <span class="nx">k</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">rl</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&#34;line&#34;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">line</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">input</span> <span class="o">=</span> <span class="nx">line</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&#34; &#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="p">}).</span><span class="nx">on</span><span class="p">(</span><span class="s2">&#34;close&#34;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nb">Number</span><span class="p">(</span><span class="nx">input</span><span class="p">);</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;*&#34;</span><span class="p">.</span><span class="nx">repeat</span><span class="p">(</span><span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">});</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>readline을 처음보고 벙쪘다.. 이게 무슨 코드인지 몰라서..</p>
-<h3 id="readline이란">readline이란?</h3>
-<blockquote>
-<p>Readable Stream에서 한 번에 한 줄씩 데이터를 읽기 위한 인터페이스를 제공하는 모듈</p>
-</blockquote>
-<p>즉, 입출력을 처리하게해주는 JS 내장 모듈입니다.</p>
-<h3 id="readline-사용법">readline 사용법</h3>
-<h4 id="모듈-불러오기">모듈 불러오기</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">readline</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;readline&#34;</span><span class="p">);</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h4 id="interface-객체-만들기">interface 객체 만들기</h4>
-<p>interface 객체를 이용하여 콘솔에서 표준 입출력 처리를 할 수 있습니다.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">rl</span> <span class="o">=</span> <span class="nx">readline</span><span class="p">.</span><span class="nx">createInterface</span><span class="p">({</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">input</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdin</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">output</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl"><span class="p">});</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>stdin : standard input</li>
-<li>stdout : standard output</li>
-</ul>
-<h4 id="입출력-코드-작성하기">입출력 코드 작성하기</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">rl</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&#34;line&#34;</span><span class="p">,</span> <span class="p">(</span><span class="nx">line</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="c1">// 입력 받은 값을 처리하는 코드
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">rl</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">answer</span> <span class="o">=</span> <span class="nx">lambSkewers</span> <span class="o">+</span> <span class="nx">drink</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">rl</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&#34;close&#34;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="c1">// 입력이 끝나고 실행하는 코드
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">answer</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><ul>
-<li><code>on()</code> : 메서드를 활영하여 이벤트와 콜백함수를 전달</li>
-<li><code>'line'</code> : 입력받은 값을 한 줄씩 읽어 문자열 타입으로 전달하는 역학을 하는 이벤트.</li>
-<li><code>rl.close()</code> : 인터페이스를 종료. 무한히 입력 받는 것을 방지하며, close를 작성하여 입력이 끝난 후 실행되어야 할 함수를 작성합니다.</li>
-</ul>
-<hr>
-<p>아무튼 readline은 아래에 조금 더 내용을 참조하였고, 우리는 3을 입력받았으므로 직각삼각형 모양으로 별을 출력해줘야한다.</p>
-<p>그러기위해서는 반복되어야하는 for문을 사용했고, 출력될 때 <code>repeat()</code>를 사용하여 for문을 반복한 만큼 *을 찍게했다.</p>
-<p>근데 여기서 별이 처음부터 찍혀야하니 repeat(i+1)을 해주었다.</p>
-<p><img src="https://github.com/myeongcode/blog/assets/67165016/22b51e01-0989-48a2-ae14-53af31eaf65e"
+</div><p>단순히 10인분 당 음료수 1개가 서비스니까 인분 당 서비스 개수를 구하고, k(먹은 음료수 개수)에서 serviceDrink(받을 수 있는 음료수 서비스 개수)를 뺀 값을 drink(실제 계산해야하는 값)에 넣어주면 끝</p>
+<p><img src="https://github.com/myeongcode/blog/assets/67165016/b761cab2-d98f-4c95-99ba-295560056c3f"
 	
 	
 	
@@ -519,30 +423,6 @@
     <h2 class="section-title">Related content</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
-            
-                
-<article class="has-image">
-    <a href="/p/programmers-%EC%96%91%EA%BC%AC%EC%B9%98/">
-        
-        
-            <div class="article-image">
-                <img src="/p/programmers-%EC%96%91%EA%BC%AC%EC%B9%98/program-logo.4ca3112adfad71dc5b3ff32dd5b8cf79_hud53099fb9da63a7d59936d9937850c96_17100_250x150_fill_q75_box_smart1.jpg" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post [Programmers] 양꼬치"
-                        
-                        data-hash="md5-TKMRKt&#43;tcdxbP/Mt1bjPeQ==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">[Programmers] 양꼬치</h2>
-        </div>
-    </a>
-</article>
-
             
                 
 <article class="has-image">
@@ -611,6 +491,30 @@
 
         <div class="article-details">
             <h2 class="article-title">[Programmers] 문자 반복 출력하기</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/programmers-%EC%A7%81%EA%B0%81%EC%82%BC%EA%B0%81%ED%98%95-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/">
+        
+        
+            <div class="article-image">
+                <img src="/p/programmers-%EC%A7%81%EA%B0%81%EC%82%BC%EA%B0%81%ED%98%95-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/program-logo.4ca3112adfad71dc5b3ff32dd5b8cf79_hud53099fb9da63a7d59936d9937850c96_17100_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post [Programmers] 직각삼각형 출력하기"
+                        
+                        data-hash="md5-TKMRKt&#43;tcdxbP/Mt1bjPeQ==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[Programmers] 직각삼각형 출력하기</h2>
         </div>
     </a>
 </article>
