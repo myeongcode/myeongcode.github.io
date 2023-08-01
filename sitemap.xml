@@ -3,7 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://myeongcode.github.io/</loc>
-    <lastmod>2023-07-21T00:00:00+00:00</lastmod>
+    <lastmod>2023-07-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://myeongcode.github.io/p/react-react--typescript-%EC%8B%A4%EB%AC%B4%EC%97%90%EC%84%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%85%8B%ED%8C%85%EB%B2%95/</loc>
+    <lastmod>2023-07-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://myeongcode.github.io/categories/</loc>
+    <lastmod>2023-07-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://myeongcode.github.io/page/</loc>
+    <lastmod>2020-10-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://myeongcode.github.io/post/</loc>
+    <lastmod>2023-07-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://myeongcode.github.io/tags/react/</loc>
+    <lastmod>2023-07-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://myeongcode.github.io/tags/</loc>
+    <lastmod>2023-07-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://myeongcode.github.io/categories/web/</loc>
+    <lastmod>2023-07-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://myeongcode.github.io/woo-myeong-gyu/</loc>
+    <lastmod>2020-10-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://myeongcode.github.io/p/programmers-%EC%96%91%EA%BC%AC%EC%B9%98/</loc>
     <lastmod>2023-07-21T00:00:00+00:00</lastmod>
@@ -11,16 +35,7 @@
     <loc>https://myeongcode.github.io/categories/algorithm/</loc>
     <lastmod>2023-07-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://myeongcode.github.io/categories/</loc>
-    <lastmod>2023-07-21T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://myeongcode.github.io/tags/javascript/</loc>
-    <lastmod>2023-07-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://myeongcode.github.io/post/</loc>
-    <lastmod>2023-07-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://myeongcode.github.io/tags/</loc>
     <lastmod>2023-07-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://myeongcode.github.io/p/programmers-%EA%B0%81%EB%8F%84%EA%B8%B0/</loc>
@@ -48,12 +63,6 @@
     <lastmod>2023-07-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://myeongcode.github.io/p/react-react%EC%97%90-%EB%8C%80%ED%95%9C-%EC%A0%95%EB%A6%AC/</loc>
-    <lastmod>2023-06-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://myeongcode.github.io/tags/react/</loc>
-    <lastmod>2023-06-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://myeongcode.github.io/categories/web/</loc>
     <lastmod>2023-06-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://myeongcode.github.io/p/jira-jira%EA%B0%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C/</loc>
@@ -187,12 +196,6 @@
   </url><url>
     <loc>https://myeongcode.github.io/archives/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://myeongcode.github.io/page/</loc>
-    <lastmod>2020-10-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://myeongcode.github.io/about-me/</loc>
-    <lastmod>2020-10-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://myeongcode.github.io/search/</loc>
   </url>

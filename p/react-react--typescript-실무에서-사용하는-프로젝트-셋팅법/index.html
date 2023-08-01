@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='&#39;현장에서 바로 써먹는 리액트 With 타입스크립트&#39; 2장 - 실무에서 자주 사용되는 개발환경을 조성해보자!'>
+<title>[React] React &#43; Typescript 실무에서 사용하는 프로젝트 셋팅법!</title>
+
+<link rel='canonical' href='https://myeongcode.github.io/p/react-react--typescript-%EC%8B%A4%EB%AC%B4%EC%97%90%EC%84%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%85%8B%ED%8C%85%EB%B2%95/'>
+
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='[React] React &#43; Typescript 실무에서 사용하는 프로젝트 셋팅법!'>
+<meta property='og:description' content='&#39;현장에서 바로 써먹는 리액트 With 타입스크립트&#39; 2장 - 실무에서 자주 사용되는 개발환경을 조성해보자!'>
+<meta property='og:url' content='https://myeongcode.github.io/p/react-react--typescript-%EC%8B%A4%EB%AC%B4%EC%97%90%EC%84%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%85%8B%ED%8C%85%EB%B2%95/'>
+<meta property='og:site_name' content='우명규'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='react' /><meta property='article:published_time' content='2023-07-31T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-07-31T00:00:00&#43;00:00'/><meta property='og:image' content='https://myeongcode.github.io/p/react-react--typescript-%EC%8B%A4%EB%AC%B4%EC%97%90%EC%84%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%85%8B%ED%8C%85%EB%B2%95/react-logo.png' />
+<meta name="twitter:title" content="[React] React &#43; Typescript 실무에서 사용하는 프로젝트 셋팅법!">
+<meta name="twitter:description" content="&#39;현장에서 바로 써먹는 리액트 With 타입스크립트&#39; 2장 - 실무에서 자주 사용되는 개발환경을 조성해보자!"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://myeongcode.github.io/p/react-react--typescript-%EC%8B%A4%EB%AC%B4%EC%97%90%EC%84%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%85%8B%ED%8C%85%EB%B2%95/react-logo.png' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/my-avatar_hua5f080a38ef5df72c539bf5b0829edad_408776_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">👀</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">우명규</a></h1>
+            <h2 class="site-description">나에게 특별한 재능이란 없다. 그저 열정적인 호기심만 있을 뿐</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/myeongcode'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/woo-myeong-gyu/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>WOO MYEONG GYU</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#들어가며">들어가며</a></li>
+    <li><a href="#프로젝트-초기-환경-셋팅">프로젝트 초기 환경 셋팅</a>
+      <ol>
+        <li><a href="#윈도우-개발-환경-설정">윈도우 개발 환경 설정</a>
+          <ol>
+            <li><a href="#초콜리티-설치">초콜리티 설치</a></li>
+            <li><a href="#노드-설치">노드 설치</a></li>
+          </ol>
+        </li>
+        <li><a href="#맥-개발-환경-설정">맥 개발 환경 설정</a>
+          <ol>
+            <li><a href="#홈브루-설치">홈브루 설치</a></li>
+            <li><a href="#노드-설치-1">노드 설치</a></li>
+          </ol>
+        </li>
+        <li><a href="#리액트-프로젝트-시작">리액트 프로젝트 시작</a>
+          <ol>
+            <li><a href="#스크립트-태그-추가">스크립트 태그 추가</a></li>
+            <li><a href="#webpack이나-babel을-설정하여-개발">Webpack이나 Babel을 설정하여 개발</a></li>
+            <li><a href="#cracreate-react-app">CRA(create-react-app)</a></li>
+            <li><a href="#nextjs-프레임워크">Next.JS 프레임워크</a></li>
+          </ol>
+        </li>
+        <li><a href="#create-react-app">create-react-app</a>
+          <ol>
+            <li><a href="#create-react-app-설치">create-react-app 설치</a></li>
+            <li><a href="#create-react-app으로-프로젝트-생성-및-실행">create-react-app으로 프로젝트 생성 및 실행</a></li>
+          </ol>
+        </li>
+        <li><a href="#react-프로젝트를-typescript로-설정">React 프로젝트를 Typescript로 설정</a>
+          <ol>
+            <li><a href="#기존-react프로젝트에서-typescript를-설정">기존 React프로젝트에서 Typescript를 설정</a></li>
+            <li><a href="#cra로-프로젝트-생성과-동시에-typescript를-설정-template-사용">CRA로 프로젝트 생성과 동시에 Typescript를 설정 (template 사용)</a></li>
+          </ol>
+        </li>
+        <li><a href="#스타일링">스타일링</a>
+          <ol>
+            <li><a href="#css-in-js의-장점">CSS-in-JS의 장점</a></li>
+            <li><a href="#emotion-스타일링-적용">Emotion 스타일링 적용</a></li>
+          </ol>
+        </li>
+        <li><a href="#절대경로로-컴포넌트-추가">절대경로로 컴포넌트 추가</a></li>
+        <li><a href="#prettier">Prettier</a>
+          <ol>
+            <li><a href="#prettier-설치">Prettier 설치</a></li>
+            <li><a href="#prettier-설정">Prettier 설정</a></li>
+            <li><a href="#prettier-실행">Prettier 실행</a></li>
+          </ol>
+        </li>
+        <li><a href="#eslint">ESLint</a>
+          <ol>
+            <li><a href="#eslint-설치">ESLint 설치</a></li>
+            <li><a href="#eslint-설정">ESLint 설정</a></li>
+            <li><a href="#eslint-실행">ESLint 실행</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#요약">요약</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/react-react--typescript-%EC%8B%A4%EB%AC%B4%EC%97%90%EC%84%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%85%8B%ED%8C%85%EB%B2%95/">
+                <img src="/p/react-react--typescript-%EC%8B%A4%EB%AC%B4%EC%97%90%EC%84%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%85%8B%ED%8C%85%EB%B2%95/react-logo_hua3ebe5898a4e39adc84559693d29cf1f_231564_800x0_resize_box_3.png"
+                        srcset="/p/react-react--typescript-%EC%8B%A4%EB%AC%B4%EC%97%90%EC%84%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%85%8B%ED%8C%85%EB%B2%95/react-logo_hua3ebe5898a4e39adc84559693d29cf1f_231564_800x0_resize_box_3.png 800w, /p/react-react--typescript-%EC%8B%A4%EB%AC%B4%EC%97%90%EC%84%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%85%8B%ED%8C%85%EB%B2%95/react-logo_hua3ebe5898a4e39adc84559693d29cf1f_231564_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="416" 
+                        loading="lazy"
+                        alt="Featured image of post [React] React &#43; Typescript 실무에서 사용하는 프로젝트 셋팅법!" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/web/" style="background-color: #0004DB; color: #fff;">
+                Web
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/react-react--typescript-%EC%8B%A4%EB%AC%B4%EC%97%90%EC%84%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%85%8B%ED%8C%85%EB%B2%95/">[React] React &#43; Typescript 실무에서 사용하는 프로젝트 셋팅법!</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            &#39;현장에서 바로 써먹는 리액트 With 타입스크립트&#39; 2장 - 실무에서 자주 사용되는 개발환경을 조성해보자!
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 31, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    13 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="들어가며">들어가며</h2>
+<p>React 프로젝트를 처음 시작하게 될 때, 저처럼 프론트엔드 초보자인 분들은 npm install만 하고나서 어떻게 해야할지 모를 때가 있을 것 같습니다.</p>
+<p>최근에도, 프로젝트를 처음으로 시작하는데 어떤 기술을 써야할지 프로젝트 셋팅은 어떻게 해야할지 자꾸 까먹게되서 그냥 이참에 프로젝트 초기 셋팅하는 법을 확실하게 알고, 또 추후에 React + Typescript로 프로젝트를 진행하게 될 때 좀 더 빠르게 초기 설정을 하기위해 이 포스트를 작성하려합니다.</p>
+<p>사실, 프로젝트에서 기획에 맞는 어떤 기술을 사용할거냐부터 정하는게 우선이긴 하지만 우리는 React + Typescript로 정했다는 가정하에 진행을 하려합니다.</p>
+<p>필요하면 어떤 서비스를 하게될 때 어떤 기술을 사용할지 파악하는 글도 추후에 올려볼려고합니다.</p>
+<p>어쨋든, 서론이 길었는데 한줄로 요약하자면 <strong>프로젝트 초기설정을 쉽고 빠르게 하기위함</strong>이 이 글의 목표입니다.</p>
+<h2 id="프로젝트-초기-환경-셋팅">프로젝트 초기 환경 셋팅</h2>
+<p>본인이 가지고 있는 환경은 맥OS이나 추후에 윈도우에서 충분히 쉽게 사용할 수 있도록 윈도우 환경, 맥 환경 둘 다 셋팅할 수 있는 방법을 적을 것입니다.</p>
+<h3 id="윈도우-개발-환경-설정">윈도우 개발 환경 설정</h3>
+<p>React 프로젝트를 사용하기 위해서는 반드시 노드 설치가 필요합니다</p>
+<h4 id="초콜리티-설치">초콜리티 설치</h4>
+<p>초콜리티(Chocolatey)는 윈도우에서 패키지를 설치하고 관리할 수 있는 윈도우용 패키지 관리자입니다
+맥에서의 Homebrew와 같은 역할을 한다고 보시면 됩니다</p>
+<p>긴말 말고, 바로 아래 링크를 통해 초콜리티 다운로드를 합니다.</p>
+<blockquote>
+<p><a class="link" href="https://chocolatey.org/install"  target="_blank" rel="noopener"
+    >https://chocolatey.org/install</a></p>
+</blockquote>
+<p>그럼 아래와 같은 페이지가 뜰 텐데, 여기서 Now run the following command에 있는 명령어를 복사하여</p>
+<p><img src="https://github.com/myeongcode/blog/assets/67165016/18596f13-4f94-48a2-8c27-bc5ad1ad0a0f"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>명령 프롬프트(cmd)또는 파워셸(PowerShell)을 관리자 권한으로 실행한 후, 위에서 복사한 코드를 붙여넣기한다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString(&#39;https://community.chocolatey.org/install.ps1&#39;))
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>설치가 완료되면 다음 명령어를 실행시켜 초콜리티가 잘 설치됐는지 확인합니다</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">choco -version
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>문제없이 설치되었다면 버전이 뜨게 될 것입니다.</p>
+<h4 id="노드-설치">노드 설치</h4>
+<p>초콜리티가 설치되었으면 이제 노드를 설치해보도록 하겠습니다.</p>
+<p>리액트는 자바스크립트 라이브러리로, 프로젝트를 생성하고 개발에 필요한 외부 라이브러리를 사용할 때에 노드 패키지(Node Package)를 이용하게 됩니다.</p>
+<p>따라서 리액트로 개발하기 위해서는 노드를 꼭 설치해야합니다.</p>
+<p>윈도우의 명령 프롬프트를 관리자 권한으로 실행시킨 후 다음 명령어를 실행시켜 노드를 설치합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">choco install -y nodejs.install
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>설치가 완료되면 명령프롬프트를 다시 실행시킨 후 다음 명령어를 실행시키면 노드의 버전이 나오면서 노드가 잘 설치되었는지 확인할 수 있습니다</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">node --version
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="맥-개발-환경-설정">맥 개발 환경 설정</h3>
+<h4 id="홈브루-설치">홈브루 설치</h4>
+<p>홈브루(Homebrew)는 패키지를 설치하고 관리할 수 있는 맥용 패키지 관리자입니다.</p>
+<p>우선 아래 링크를 통해서 맥에 홈브루를 설치합니다.</p>
+<blockquote>
+<p><a class="link" href="https://brew.sh/index_ko"  target="_blank" rel="noopener"
+    >https://brew.sh/index_ko</a> (설치법은 해당 링크에 잘 설명되어있음)</p>
+</blockquote>
+<h4 id="노드-설치-1">노드 설치</h4>
+<p>터미널을 열고 다음 명령어를 실행하여 노드를 설치합니다</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">brew install node
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>설치가 완료되면 명령어로 노드가 제대로 설치되었는지 확인한다</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">node -v
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>노드를 설치하면, 노드의 패키지를 관리하는 노드 패키지 매니저인 npm(Node Package Manager)도 같이 설치된다. 이것도 잘 설치되어있는지 확인한다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">npm -v
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="리액트-프로젝트-시작">리액트 프로젝트 시작</h3>
+<p>리액트를 사용하여 프로젝트를 시작하는 방법은 다양합니다.</p>
+<ul>
+<li>스크립트 태그 추가</li>
+<li>Webpack이나 Babel을 설정하여 개발</li>
+<li>CRA(create-react-app)</li>
+<li>Next.JS 프레임워크 설치</li>
+</ul>
+<p>우리는 CRA방식으로 진행을 할 것이지만 다른 것들은 어떻게 다른지 간단하게 살펴보면 좋을 것이다.</p>
+<h4 id="스크립트-태그-추가">스크립트 태그 추가</h4>
+<p>리액트는 자바스크립트 라이브러리이므로 jQuery와 같은 보통의 자바스크립트의 사용방법과 동일하게 스크립트 태그를 추가하여 사용할 수 있습니다</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&#34;app&#34;</span><span class="o">&gt;&lt;</span><span class="err">/div&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;</span><span class="nx">script</span> <span class="kr">async</span> <span class="nx">src</span><span class="o">=</span><span class="s2">&#34;https://unpkg.com/lodash&#34;</span><span class="o">&gt;&lt;</span><span class="err">/script&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;</span><span class="err">/body&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>기존에 그냥 JS로만 작성되어있는 웹서비스인 경우에는 빠르게 리액트로 시작할 수 있는 방법이지만, 고려해야할 사항이 많다.</p>
+<h4 id="webpack이나-babel을-설정하여-개발">Webpack이나 Babel을 설정하여 개발</h4>
+<p>크로스 브라우징 문제와 최신 ECMAScript, Typescript등을 사용하여 리액트 프로젝트를 진행하기 위해서는 Webpack, Babel을 설정하여 개발을 할 수 있습니다.</p>
+<blockquote>
+<p><a class="link" href="https://goo-gy.github.io/2021-12-31-webpack-react"  target="_blank" rel="noopener"
+    >https://goo-gy.github.io/2021-12-31-webpack-react</a> (goo-gy님의 Webpack을 이용한 React개발)</p>
+</blockquote>
+<p>하지만, Webpack이나 Babel을 잘 알아야하기때문에 초보자들에게는 큰 어려움이 있습니다.</p>
+<h4 id="cracreate-react-app">CRA(create-react-app)</h4>
+<p>Webpack이나 Babel을 설정하여 개발하는 방법에 대해 어려움을 인지한 페이스북이 create-react-app이라는 CLI(Command Line Interface) 툴을 만들어서 배포했습니다.</p>
+<blockquote>
+<p><a class="link" href="https://create-react-app.dev/"  target="_blank" rel="noopener"
+    >https://create-react-app.dev/</a></p>
+</blockquote>
+<p>보편적으로 제일 많이 사용하기도 하고, 이 툴을 사용하면 간단하게 리액트 프로젝트를 생성하고 개발할 수 있습니다</p>
+<h4 id="nextjs-프레임워크">Next.JS 프레임워크</h4>
+<p>이건 React만을 사용하는게 아닌 더 많은 기능을 제공하는 프레임워크인 만큼 Next.js만이 가진 기능과 고유한 방법들이 있기때문에 React를 어느정도 알고난 후 SSR과 router을 사용하고싶다하면 그때 공부해도 괜찮을 것 같다.</p>
+<hr>
+<h3 id="create-react-app">create-react-app</h3>
+<p>그러면 create-react-app으로 리액트를 개발하는 방법에 대해 알아보자</p>
+<h4 id="create-react-app-설치">create-react-app 설치</h4>
+<p>다음 명령어를 실행하여 create-react-app을 설치합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">npm install -g create-react-app
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>다음 명령어를 사용하여 문제없이 설치되었는지 확인합니다</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">npx create-react-app --version
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p><strong>여기서 헷갈리면 안되는 점!</strong> 👉🏻 <code>npm</code>은 패키지를 설치할 때 사용하는 명령어이고, <code>npx</code>는 npm을 통해 설치한 패키지를 실행할 때 사용하는 명령어</p>
+</blockquote>
+<h4 id="create-react-app으로-프로젝트-생성-및-실행">create-react-app으로 프로젝트 생성 및 실행</h4>
+<p>다음 명령어를 통해 React 프로젝트를 생성해봅시다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">npx create-react-app my-app
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>여기까지는 일반적인 React 프로젝트를 생성하는 방법이지만, 우리는 더 Typescript와 실무에서 사용되는 Emotion, prettier까지 설정을 해볼 것입니다.</p>
+<hr>
+<h3 id="react-프로젝트를-typescript로-설정">React 프로젝트를 Typescript로 설정</h3>
+<p>React프로젝트를 Typescript로 설정하는 방법에는 2가지 존재합니다</p>
+<ul>
+<li>기존 React프로젝트에서 Typescript를 설정</li>
+<li>CRA로 프로젝트 생성과 동시에 Typescript를 설정</li>
+</ul>
+<h4 id="기존-react프로젝트에서-typescript를-설정">기존 React프로젝트에서 Typescript를 설정</h4>
+<p>이미 생성되어있는 리액트 프로젝트에 타입스크립트를 적용하기 위해서는 타입스크립트 라이브러리와 리액트의 타입이 정의된 타입 정의 파일을 설치할 필요가 있습니다.</p>
+<ul>
+<li><strong>typescript</strong> : 타입스크립트 라이브러리</li>
+<li><strong>@types/node</strong> : 자바스크립트 런타임인 노드의 타입이 정의된 타입 정의 파일</li>
+<li><strong>@types/react</strong> : 리액트의 타입이 정의된 타입 정의 파일</li>
+<li><strong>@types/react-dom</strong> : react-dom의 타입이 정의된 타입 정의 파일</li>
+</ul>
+<p>해당 프로젝트의 터미널에서 다음 명령어를 실행시킵니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">npm install --save-dev typescript @types/node @types/react @types/react-dom
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>설치가 완료되었다면 해당 프로젝트의 루트 폴더에서 <code>tsconfig.json</code>파일을 생성하고 내용을 다음과 같이 수정합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;compilerOptions&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;target&#34;</span><span class="p">:</span> <span class="s2">&#34;es5&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;lib&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;dom&#34;</span><span class="p">,</span> <span class="s2">&#34;dom.iterable&#34;</span><span class="p">,</span> <span class="s2">&#34;esnext&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;allowJs&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;skipLibCheck&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;esModuleInterop&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;allowSyntheticDefaultImports&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;strict&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;forceConsistentCasingInFileNames&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;noFallthroughCasesInSwitch&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;module&#34;</span><span class="p">:</span> <span class="s2">&#34;esnext&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;moduleResolution&#34;</span><span class="p">:</span> <span class="s2">&#34;node&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;resolveJsonModule&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;isolatedModules&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;noEmit&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;jsx&#34;</span><span class="p">:</span> <span class="s2">&#34;react-jsx&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;include&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;src&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>위와 같이 작성했다면 자바스크립트 파일들을 타입스크립트 파일로 변경합니다.</p>
+<ul>
+<li>./src/App.js 👉🏻 ./src/App.tsx</li>
+<li>./src/App.test.js 👉🏻 ./src/App.test.tsx</li>
+<li>./src/index.js 👉🏻 ./src/index.tsx</li>
+<li>./src/reportWebVitals.js 👉🏻 ./src/reportWebVitals.ts</li>
+<li>./src/setupTest.js 👉🏻 ./src/setupTest/ts</li>
+</ul>
+<p>다음으로는 기존의 자바스크립트 코드를 타입스크립트를 사용하여 변경해야합니다.
+우선 svg 파일을 타입스크립트에서 불러올 수 있게 하기위해 <code>./src/custom.d.ts</code>파일을 생성하고 다음과 같이 수정합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">declare</span> <span class="nx">module</span> <span class="s2">&#34;*.svg&#34;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">export</span> <span class="kr">const</span> <span class="nx">ReactComponent</span><span class="o">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">FunctionComponent</span><span class="o">&lt;</span><span class="nx">React</span><span class="p">.</span><span class="nx">SVGProps</span><span class="o">&lt;</span><span class="nx">SVGSVGElement</span><span class="o">&gt;</span> <span class="o">&amp;</span> <span class="p">{</span> <span class="nx">title</span><span class="o">?:</span> <span class="nx">string</span> <span class="p">}</span><span class="o">&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">src</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">export</span> <span class="k">default</span> <span class="nx">src</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>여기서 생성하는 d.ts 파일은 타입 정의 파일로 <strong>타입스크립트가 인식하지 못하는 타입이지만, 타입스크립트 안에서 사용할 특정 타입들을 정의할 때 사용</strong>합니다.</p>
+</blockquote>
+<p>그리고 ./src/reportWebVitals.ts 파일을 열고 다음과 같이 수정합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ts" data-lang="ts"><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">ReportHandler</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&#34;web-vitals&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">reportWebVitals</span> <span class="o">=</span> <span class="p">(</span><span class="nx">onPerfEntry?</span>: <span class="kt">ReportHandler</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">reportWebVitals</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>이렇게 모든 설정이 끝났다면 리액트 프로젝트를 실행시켜 페이지가 잘 표시되는지 확인해보면 됩니다!</p>
+<h4 id="cra로-프로젝트-생성과-동시에-typescript를-설정-template-사용">CRA로 프로젝트 생성과 동시에 Typescript를 설정 (template 사용)</h4>
+<p>create-react-app에서 제공하는 템플릿 옵션에서 typescript를 적용시켜 생성시킬수도 있습니다.</p>
+<p>다음 명령어를 사용해서 새로운 타입스크립트 리액트 프로젝트를 생성해봅시다</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">npx create-react-app my-app --template=typescript
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>이렇게 template 옵션으로 사용하면 전에 <a class="link" href="#%ea%b8%b0%ec%a1%b4-react%ed%94%84%eb%a1%9c%ec%a0%9d%ed%8a%b8%ec%97%90%ec%84%9c-typescript%eb%a5%bc-%ec%84%a4%ec%a0%95" >기존-react프로젝트에서-typescript를-설정</a>에서 했던 것과 동일하게 적용이 된 것을 확인할 수 있고 더 쉽고 빠르게 프로젝트를 생성할 수 있습니다.</p>
+<hr>
+<h3 id="스타일링">스타일링</h3>
+<p>리액트는 웹 어플리케이션 개발에 사용하는 라이브러리이므로 스타일링은 물론 웹 페이지 개발과 동일하게 CSS를 사용할 수 있습니다.</p>
+<p>자바스크립트 안에서 스타일링 할 수 있는 CSS-in-JS기법을 사용하여 emotion으로 함수형 스타일링도 많이 적용하는 것을 볼 수 있습니다.
+(styled-components도 많이 사용하고있다고 하니 관심있으면 찾아보시길)</p>
+<p>보통 리액트는 컴포넌트를 기반으로 개발되기에 CSS파일을 갖는 형식으로 스타일을 관리하게 됩니다. 하지만 이렇게 각각의 컴포넌트에서 CSS를 분리하여 관리하다보면 CSS의 클래스명이 중복되어 의도치 않은 스타일이 적용될 수도 있습니다.</p>
+<h4 id="css-in-js의-장점">CSS-in-JS의 장점</h4>
+<p>이런 문제를 해결하고자 CSS-in-JS라는 방법론이 탄생했는데, 이런 방법으로 사용하면 어떤 장점이 있는지 살펴보자</p>
+<blockquote>
+<p><strong>클래스명 버그 해결</strong></p>
+</blockquote>
+<p>보통 CSS에 클래스명을 생성하고 스타일을 작성한 후 해당 이름을 HTML 태그에 적용함으로써 스타일을 적용합니다. 하지만 이런 방식은 클래스명의 중복, 겹침 또는 오타 같은 문제가 발생할 수도 있기에 CSS-in-JS는 스타일을 컴포넌트에 직접 적용함으로써 이런 문제를 해결하고 있다</p>
+<blockquote>
+<p><strong>보다 쉬운 CSS 관리</strong></p>
+</blockquote>
+<p>CSS-in-JS는 모든 스타일이 특정 컴포넌트에 연결되기 때문에 보다 명확히 사용되는 스타일을 알 수 있으며 불필요한 스타일을 쉽게 제거할 수 있다</p>
+<blockquote>
+<p><strong>간단한 동적 스타일 적용</strong></p>
+</blockquote>
+<p>일반적으로 동적 스타일을 위해 여러 클래스를 생성하고 해당 클래스가 특정 조건일 때에 추가되도록 하는데, 이런 방식은 코드를 복잡하게 하며 깔끔하지 않지만, CSS-in-JS는 여러 클래스를 만들 필요가 없으며 컴포넌트의 상태에 따라 쉽고 직관적으로 동적 스타일을 줄 수 있다</p>
+<blockquote>
+<p><strong>CSS 자동 구성</strong></p>
+</blockquote>
+<p>styled-components 또는 Emotion을 사용하면 페이지에 렌더링되는 컴포넌트를 추적하여 해당 스타일을 완전히 자동으로 추가합니다. 또한 코드 분할(Code Splitting)시 사용자가 필요한 최소한의 코드를 자동으로 추가한다</p>
+<h4 id="emotion-스타일링-적용">Emotion 스타일링 적용</h4>
+<p>Emotion으로 스타일링을 하려면 먼저 현재 프로젝트의 터미널로 들어가 다음 명령어를 입력한다</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">npm install --save @emotion/react @emotion/styled
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>그러면 간단하게 App.tsx파일을 CSS-in-JS방식으로 수정한다하면</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="kr">import</span> <span class="s2">&#34;./App.css&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">App() {</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="s">&#34;App&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">header</span> <span class="na">className</span><span class="o">=</span><span class="s">&#34;App-header&#34;</span><span class="p">&gt;...&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>위와 같은 코드를 아래처럼 변경할 수 있을 것이다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="kr">import</span> <span class="s2">&#34;./App.css&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">styled</span> <span class="kr">from</span> <span class="s2">&#34;@emotion/styled&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">Container</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">div</span><span class="sb">`
+</span></span></span><span class="line"><span class="cl"><span class="sb">  text-align: center;
+</span></span></span><span class="line"><span class="cl"><span class="sb">`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">App() {</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">Container</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">header</span> <span class="na">className</span><span class="o">=</span><span class="s">&#34;App-header&#34;</span><span class="p">&gt;...&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">Container</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Emotion을 사용하여 리액트 컴포넌트를 생성하기 위해서는 <code>styled.[HTML태그]</code>형식과 자바스크립트의 템플릿 리터럴(``)을 사용하면 쉽게 컴포넌트를 스타일링 할 수 있다.</p>
+<p>동적인 이미지인 img태그도 아래처럼 변경할 수 있다</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">styled</span> <span class="kr">from</span> <span class="s2">&#34;@emotion/styled&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">AppLogo</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">img</span><span class="sb">`
+</span></span></span><span class="line"><span class="cl"><span class="sb">  height: 40vmin;
+</span></span></span><span class="line"><span class="cl"><span class="sb">  pointer-events: none;
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">  @media (prefers-reduced-motion: no-preference) {
+</span></span></span><span class="line"><span class="cl"><span class="sb">    animation: App-logo-spin infinite 20s linear;
+</span></span></span><span class="line"><span class="cl"><span class="sb">  }
+</span></span></span><span class="line"><span class="cl"><span class="sb">`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">AppLink</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">a</span><span class="sb">`
+</span></span></span><span class="line"><span class="cl"><span class="sb">  color: #61dafb;
+</span></span></span><span class="line"><span class="cl"><span class="sb">`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">App() {</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">Container</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">header</span> <span class="na">className</span><span class="o">=</span><span class="s">&#34;App-header&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">AppLogo</span> <span class="na">src</span><span class="o">=</span><span class="p">{</span><span class="nx">logo</span><span class="p">}</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;logo&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">Edit</span> <span class="p">&lt;</span><span class="nt">code</span><span class="p">&gt;</span><span class="nx">src</span><span class="o">/</span><span class="nx">App</span><span class="p">.</span><span class="nx">tsx</span><span class="p">&lt;/</span><span class="nt">code</span><span class="p">&gt;</span> <span class="nx">and</span> <span class="nx">save</span> <span class="nx">to</span> <span class="nx">reload</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">link</span>
+</span></span><span class="line"><span class="cl">          <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://reactjs.org&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="na">target</span><span class="o">=</span><span class="s">&#34;_blank&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="na">rel</span><span class="o">=</span><span class="s">&#34;noopener noreferrer&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">Learn</span> <span class="nx">React</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">link</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">Container</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>여기서, 중요한 점은 @media를 리터럴 안에 적용시킬 수 있다는 점과 원래 css였다면 .App-logo라는 클래스명안에 animation을 적용시켜야했다면</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">@</span><span class="k">media</span> <span class="o">(</span><span class="nt">prefers-reduced-motion</span><span class="o">:</span> <span class="nt">no-preference</span><span class="o">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="p">.</span><span class="nc">App-logo</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">animation</span><span class="p">:</span> <span class="n">App-logo-spin</span> <span class="kc">infinite</span> <span class="mi">20</span><span class="kt">s</span> <span class="kc">linear</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Emotion으로 제작한 컴포넌트는 해당 컴포넌트가 직접 애니메이션을 수행하므로 클래스명을 특별히 지정하지 않고 직접 애니메이션을 사용하면 된다는 것</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">AppLogo</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">img</span><span class="sb">`
+</span></span></span><span class="line"><span class="cl"><span class="sb">  height: 40vmin;
+</span></span></span><span class="line"><span class="cl"><span class="sb">  pointer-events: none;
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">  @media (prefers-reduced-motion: no-preference) {
+</span></span></span><span class="line"><span class="cl"><span class="sb">    animation: App-logo-spin infinite 20s linear;
+</span></span></span><span class="line"><span class="cl"><span class="sb">  }
+</span></span></span><span class="line"><span class="cl"><span class="sb">`</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>또한, keyframes를 사용하여 로고 이미지에서 사용할 회전 애니메이션을 따로 선언하여 변수로 사용할 수도 있다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">styled</span> <span class="kr">from</span> <span class="s2">&#34;@emotion/styled&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">keyframes</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&#34;@emotion/react&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">spinAnimation</span> <span class="o">=</span> <span class="nx">keyframes</span><span class="sb">`
+</span></span></span><span class="line"><span class="cl"><span class="sb">  from {
+</span></span></span><span class="line"><span class="cl"><span class="sb">    transform: rotate(0deg);
+</span></span></span><span class="line"><span class="cl"><span class="sb">  }
+</span></span></span><span class="line"><span class="cl"><span class="sb">  to {
+</span></span></span><span class="line"><span class="cl"><span class="sb">    transform: rotate(360deg);
+</span></span></span><span class="line"><span class="cl"><span class="sb">  }
+</span></span></span><span class="line"><span class="cl"><span class="sb">`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">AppLogo</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">img</span><span class="sb">`
+</span></span></span><span class="line"><span class="cl"><span class="sb">  height: 40vmin;
+</span></span></span><span class="line"><span class="cl"><span class="sb">  pointer-events: none;
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">  @media (prefers-reduced-motion: no-preference) {
+</span></span></span><span class="line"><span class="cl"><span class="sb">    animation: </span><span class="si">${</span><span class="nx">spinAnimation</span><span class="si">}</span><span class="sb"> infinite 20s linear;
+</span></span></span><span class="line"><span class="cl"><span class="sb">  }
+</span></span></span><span class="line"><span class="cl"><span class="sb">`</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Emotion으로 제작한 컴포넌트는 자바스크립트의 템플릿 리터럴을 사용하기 때문에 문자열 중간에 자바스크립트 변수를 사용할 수도 있다.</p>
+<p>이처럼 자주 사용되는 애니메이션은 Emotion의 keyframes를 사용하여 미리 정의하고, 필요한 부분에서 불러와 사용하면 된다.</p>
+<p>모든 컴포넌트는 Emotion으로 바꾸면 다음과 같다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">logo</span> <span class="kr">from</span> <span class="s2">&#34;./logo.svg&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="s2">&#34;./App.css&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">styled</span> <span class="kr">from</span> <span class="s2">&#34;@emotion/styled&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="p">{</span> <span class="nx">keyframes</span> <span class="p">}</span> <span class="kr">from</span> <span class="s2">&#34;@emotion/react&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">Container</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">div</span><span class="sb">`
+</span></span></span><span class="line"><span class="cl"><span class="sb">  text-align: center;
+</span></span></span><span class="line"><span class="cl"><span class="sb">`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">Header</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">header</span><span class="sb">`
+</span></span></span><span class="line"><span class="cl"><span class="sb">  background-color: #282c34;
+</span></span></span><span class="line"><span class="cl"><span class="sb">  min-height: 100vh;
+</span></span></span><span class="line"><span class="cl"><span class="sb">  display: flex;
+</span></span></span><span class="line"><span class="cl"><span class="sb">  flex-direction: column;
+</span></span></span><span class="line"><span class="cl"><span class="sb">  align-items: center;
+</span></span></span><span class="line"><span class="cl"><span class="sb">  justify-content: center;
+</span></span></span><span class="line"><span class="cl"><span class="sb">  font-size: calc(10px + 2vmin);
+</span></span></span><span class="line"><span class="cl"><span class="sb">  color: white;
+</span></span></span><span class="line"><span class="cl"><span class="sb">`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">spinAnimation</span> <span class="o">=</span> <span class="nx">keyframes</span><span class="sb">`
+</span></span></span><span class="line"><span class="cl"><span class="sb">  from {
+</span></span></span><span class="line"><span class="cl"><span class="sb">    transform: rotate(0deg);
+</span></span></span><span class="line"><span class="cl"><span class="sb">  }
+</span></span></span><span class="line"><span class="cl"><span class="sb">  to {
+</span></span></span><span class="line"><span class="cl"><span class="sb">    transform: rotate(360deg);
+</span></span></span><span class="line"><span class="cl"><span class="sb">  }
+</span></span></span><span class="line"><span class="cl"><span class="sb">`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">AppLogo</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">img</span><span class="sb">`
+</span></span></span><span class="line"><span class="cl"><span class="sb">  height: 40vmin;
+</span></span></span><span class="line"><span class="cl"><span class="sb">  pointer-events: none;
+</span></span></span><span class="line"><span class="cl"><span class="sb">
+</span></span></span><span class="line"><span class="cl"><span class="sb">  @media (prefers-reduced-motion: no-preference) {
+</span></span></span><span class="line"><span class="cl"><span class="sb">    animation: </span><span class="si">${</span><span class="nx">spinAnimation</span><span class="si">}</span><span class="sb"> infinite 20s linear;
+</span></span></span><span class="line"><span class="cl"><span class="sb">  }
+</span></span></span><span class="line"><span class="cl"><span class="sb">`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">AppLink</span> <span class="o">=</span> <span class="nx">styled</span><span class="p">.</span><span class="nx">a</span><span class="sb">`
+</span></span></span><span class="line"><span class="cl"><span class="sb">  color: #61dafb;
+</span></span></span><span class="line"><span class="cl"><span class="sb">`</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">App() {</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">Container</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;</span><span class="nt">Header</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">AppLogo</span> <span class="na">src</span><span class="o">=</span><span class="p">{</span><span class="nx">logo</span><span class="p">}</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;logo&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">Edit</span> <span class="p">&lt;</span><span class="nt">code</span><span class="p">&gt;</span><span class="nx">src</span><span class="o">/</span><span class="nx">App</span><span class="p">.</span><span class="nx">tsx</span><span class="p">&lt;/</span><span class="nt">code</span><span class="p">&gt;</span> <span class="nx">and</span> <span class="nx">save</span> <span class="nx">to</span> <span class="nx">reload</span><span class="p">.</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">AppLink</span>
+</span></span><span class="line"><span class="cl">          <span class="na">href</span><span class="o">=</span><span class="s">&#34;https://reactjs.org&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="na">target</span><span class="o">=</span><span class="s">&#34;_blank&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="na">rel</span><span class="o">=</span><span class="s">&#34;noopener noreferrer&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">Learn</span> <span class="nx">React</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">AppLink</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">&lt;/</span><span class="nt">Header</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">Container</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h3 id="절대경로로-컴포넌트-추가">절대경로로 컴포넌트 추가</h3>
+<p>리액트 프로젝트 개발 시 우리는 수많은 리액트 컴포넌트를 제작하고, 제작한 컴포넌트를 블록을 조합하듯 페이지를 제작하게된다. 이때 리액트 컴포넌트는 보통 상대경로(import Button from &lsquo;./../../../Button&rsquo;)를 사용하여 불러와 사용하게 된다.</p>
+<p>이는 컴포넌트의 개수가 적고 폴더 구조가 복잡하지 않을 경우에는 큰 문제가 없다.</p>
+<p>하지만 프로젝트가 커지고 수많은 컴포넌트들이 추가되면서 프로젝트의 폴더 구조가 복잡해지면, 상대 경로 추가 방식은 어떤 경로를 지정하고 있는지 명확하게 파악하기 어렵고 필요한 컴포넌트를 추가할 때에 경로를 추가하기 어렵다.</p>
+<p>이런 문제는 타입스크립트의 설정으로 간단히 해결할 수 있다.</p>
+<p>프로젝트에서 <code>tsconfig.json</code>파일을 열고 바음과 같이 baseUrl옵션을 추가한다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;compilerOptions&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="err">...</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;jsx&#34;</span><span class="p">:</span> <span class="s2">&#34;react-jsx&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;baseUrl&#34;</span><span class="p">:</span> <span class="s2">&#34;src&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="err">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>그러면 기존에 상대경로로 import했던 컴포넌트를</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">App</span> <span class="kr">from</span> <span class="s2">&#34;./components/App&#34;</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>아래처럼 절대경로로 사용할 수 있게된다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">App</span> <span class="kr">from</span> <span class="s2">&#34;components/App&#34;</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>지금은 폴더구조가 복잡하지 않아 필요성이 느껴지지 않겠지만, 실무에서 복잡한 프로젝트를 다루게된다면 이런 방식이 왜 필요한지 알게될 것이다.</p>
+<hr>
+<h3 id="prettier">Prettier</h3>
+<p>Prettier는 코드 포맷터(Code formatter)로 Javascript, CSS, JSON 등을 지원한다.
+Prettier는 미리 약속한 코드 스타일에 맞춰 자동으로 코드의 형식을 수정해주는 도구로, 협업시 여러 개발자들의 코드 스타일을 맞추는데 큰 도움을 준다.</p>
+<h4 id="prettier-설치">Prettier 설치</h4>
+<p>Prettier를 적용시킬 프로젝트의 터미널을 열고 다음 명령어로 Prettier를 설치한다</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">npm install --save-dev prettier
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="prettier-설정">Prettier 설정</h4>
+<p>해당 프로젝트의 루트 폴더에 <code>.prettierrc.js</code> 파일을 생성하고 다음과 같이 수정하여 Prettier를 설정합니다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">singleQuote</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">trailingComma</span><span class="o">:</span> <span class="s2">&#34;all&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">printWidth</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>여기서 설정한 내용은 다음과 같다</p>
+<ul>
+<li><strong>singleQuote</strong> : 싱글쿼트(&rsquo;)를 주로 사용하도록 설정</li>
+<li><strong>trailingComma</strong> : 콤마(,)를 추가할 수 있다면, 콤마를 추가하도록 설정</li>
+<li><strong>printWidth</strong> : 한 줄에 작성할 수 있는 최대 코드 문자 수를 설정</li>
+</ul>
+<h4 id="prettier-실행">Prettier 실행</h4>
+<p>설정이 완료되었다면, package.json파일에서 Prettier를 실행하는 스크립트를 작성한다.</p>
+<p>아래처럼 &ldquo;format&quot;과 &ldquo;format:fix&quot;라는 스크립트를 추가한다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="err">...</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;scripts&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="err">...</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;eject&#34;</span><span class="p">:</span> <span class="s2">&#34;react-scripts eject&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;format&#34;</span><span class="p">:</span> <span class="s2">&#34;prettier --check ./src&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;format:fix&#34;</span><span class="p">:</span> <span class="s2">&#34;prettier --write ./src&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="err">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>format : Prettier를 check 옵션과 함께 실행하여 우리가 설정한 내용에 위반되는 내용이 있는지 검사하는 스크립트</li>
+<li>format:fix : Prettier를 write 옵션과 함께 사용하여 잘못된 내용을 설정한 내용에 맞게 자동으로 수정해주는 스크립트</li>
+</ul>
+<p>자 이제 Prettier를 실행해보자</p>
+<p>해당 프로젝트에 <code>.prettierrc.js</code>파일에 맞는 format을 지키고 있는지 검사하려면 해당 프로젝트 터미널에 다음과 같이 입력한다</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">npm run format
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>그러면 다음과 같은 결과를 확인할 수 있다
+<img src="https://github.com/myeongcode/blog/assets/67165016/8735ba8b-0391-49e1-9f83-5a973340bc97"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>결과 내용을 보면 4가지의 파일에서 prettier 규칙에 위반하는 것을 확인할 수 있다.</p>
+<p>이제 위반한 내용을 쉽게 수정하게 만들려면 다음 명령어를 실행시키면 된다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">npm run format:fix
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="https://github.com/myeongcode/blog/assets/67165016/fb7d465e-52a3-4306-b79d-81b88e649ba8"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>그리고 나서 다시 <code>npm run format</code>을 해보면 문제가 없다는 것을 확인할 수 있다</p>
+<p><img src="https://github.com/myeongcode/blog/assets/67165016/8a7f3d45-c2f4-4216-8b84-f561a7f9203f"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<hr>
+<h3 id="eslint">ESLint</h3>
+<p>ESLint는 ES(ECMAScript)와 Lint(에러 코드 표식)의 합성어로, 자바스크립트의 <strong>코드를 분석하고 잠재적인 오류나 버그를 찾는데 도움을 주는 정적 분석 툴</strong>이다</p>
+<p>여러 개발자들이 하나의 소스코드를 수정하는 협업 환경에서 ESLint는 소스 코드를 분석하고 오류나 버그의 가능성을 지적하거나 소스 코드의 스타일을 일관성 있게 관리해주기 때문에 Prettier와 함께 자주 사용된다</p>
+<h4 id="eslint-설치">ESLint 설치</h4>
+<p>ESLint를 설치할 프로젝트의 터미널을 열고 다음과 같이 ESLint를 설치한다</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">npm install eslint --save-dev
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="eslint-설정">ESLint 설정</h4>
+<p>설치가 됐다면 다음 명령어를 실행하여 ESLint를 초기화하자</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">npx eslint --init
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>그리고나서는 7~8개의 질문을 할건데</p>
+<ol>
+<li>ESLint를 설정하기 위해 필요한 라이브러리를 설치할 것인가? y</li>
+<li>문제점을 찾는 것과 잘못된 점을 고치는 스크립트를 따로 작성할 것인가? To check syntax and find problem</li>
+<li>프로젝트에서 모듈을 추가할 때 어떤 방식을 선택할건지? Javascript</li>
+<li>어떤 프로젝트에서 사용할건지? React</li>
+<li>Typescript를 사용하는지? Yes</li>
+<li>어떤 환경에서 실행되는지? Browser</li>
+<li>설정 파일의 포맷을 어떤 형식으로 저장할건지? Javascript</li>
+<li>지금까지 설정한 내용으로 설치를 진행할건지? Yes</li>
+<li>어떤 패키지 매니저로 설치하는걸 원하는지? npm</li>
+</ol>
+<p><img src="https://github.com/myeongcode/blog/assets/67165016/83368548-8dc0-48f1-946f-b7fabd69de3c"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image"
+	
+	
+></p>
+<p>그러면 eslintrc.js파일이 자동으로 생성되고 안에는 다음과 같은 내용이 추가된다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">env</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">browser</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">es2021</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">extends</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;eslint:recommended&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;plugin:@typescript-eslint/recommended&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;plugin:react/recommended&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">overrides</span><span class="o">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">env</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">node</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">files</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;.eslintrc.{js,cjs}&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">parserOptions</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">sourceType</span><span class="o">:</span> <span class="s2">&#34;script&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">parser</span><span class="o">:</span> <span class="s2">&#34;@typescript-eslint/parser&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">parserOptions</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ecmaVersion</span><span class="o">:</span> <span class="s2">&#34;latest&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">sourceType</span><span class="o">:</span> <span class="s2">&#34;module&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">plugins</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;@typescript-eslint&#34;</span><span class="p">,</span> <span class="s2">&#34;react&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">rules</span><span class="o">:</span> <span class="p">{},</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>만약 ESLint와 타입스크립트를 검사하는 룰을 변경하고싶다면, rules 옵션에 필요한 내용을 추가하면 된다.</p>
+<p>마지막으로, ESLint에 리액트 버전을 알려줄 필요가 있으며 react/react-in-jsx-scope 규칙의 사용을 중지시킬 필요가 있다.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="c1">//eslintrc.js
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">settings</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">react</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">version</span><span class="o">:</span> <span class="s2">&#34;detect&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">env</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">rules</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;react/react-in-jsx-scope&#34;</span><span class="o">:</span> <span class="s2">&#34;off&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>react/react-in-jsx-scope 규칙은 jsx파일에서 import React from &lsquo;react&rsquo;를 항상 사용하도록 하는 규칙이지만 리액트의 버전 17부터 import React from &lsquo;react&rsquo;를 할 필요가 없어졌기 때문에 이 규칙을 사용하지 않도록 할 필요가 있다.</p>
+<p>자세한 내용은 아래 공식 문서를 참고하면 된다</p>
+<blockquote>
+<p>react/react-in-jsx-scope : <a class="link" href="https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/react-in-jsx-scope.md"  target="_blank" rel="noopener"
+    >https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/react-in-jsx-scope.md</a></p>
+</blockquote>
+<blockquote>
+<p>Removing Unused React imports : <a class="link" href="https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#removing-unused-react-imports"  target="_blank" rel="noopener"
+    >https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#removing-unused-react-imports</a></p>
+</blockquote>
+<p>이제 설정한 ESLint를 사용하여 잠재적인 오류나 버그를 찾기 위한 실행 스크립트를 만들어보자.
+package.json에서 ESLint 실행 스크립트를 추가하자</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="err">...</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;scripts&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="err">...</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;lint&#34;</span><span class="p">:</span> <span class="s2">&#34;eslint ./src&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;lint:fix&#34;</span><span class="p">:</span> <span class="s2">&#34;eslint --fix ./src&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="err">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="eslint-실행">ESLint 실행</h4>
+<p>다음과 같이 명령어를 실행하면 ESLint로 소스코드를 검사해볼 수 있다</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">npm run lint
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>현재는 오류가 발생하지 않았지만, eslint로 인한 규칙 위반시 <code>npm run lint:fix</code> 명령어를 실행하면 된다.</p>
+<hr>
+<h2 id="요약">요약</h2>
+<p>우리가 배운 내용을 간단하게 요약하면 다음과 같다</p>
+<ol>
+<li><strong>CRA에서 template으로 Typescript 간단하게 적용시키기</strong></li>
+<li><strong>Emotion으로 CSS-in-JS 함수형 스타일링하여 컴포넌트 제작하기</strong></li>
+<li><strong>소스코드의 스타일을 맞추거나 잠재적인 오류, 버그를 방지하기 위해 실무에서 자주 사용되는 Prettier와 ESLint 적용 방법</strong></li>
+</ol>
+<p>실무에서 다른 개발자들과 협업하기 위해서는 꼭 필요하고 자주 사용된다고 하니 알아놓으면 좋을 것 같고, 앞으로 프로젝트 초기설정을 할 때에는 위에서 배운 내용을 토대로 쉽게 셋팅할 수 있을 것 같다.</p>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/react/">react</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/react-react%EC%97%90-%EB%8C%80%ED%95%9C-%EC%A0%95%EB%A6%AC/">
+        
+        
+            <div class="article-image">
+                <img src="/p/react-react%EC%97%90-%EB%8C%80%ED%95%9C-%EC%A0%95%EB%A6%AC/react-logo.36cedae437ce7d8b5a8d136a0f80ae9c_hua3ebe5898a4e39adc84559693d29cf1f_231564_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post [React] React에 대한 정리"
+                        
+                        data-hash="md5-Ns7a5DfOfYtajRNqD4CunA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[React] React에 대한 정리</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="has-image">
+    <a href="/p/jira-jira%EA%B0%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C/">
+        
+        
+            <div class="article-image">
+                <img src="/p/jira-jira%EA%B0%80-%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C/jira-logo.d7a525bc2313bdbb39d419a06023ff0f_hu5a45f1008d9b0d027dd43621df4b7488_246608_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post [JIRA] JIRA가 무엇일까?"
+                        
+                        data-hash="md5-16UlvCMTvbs51BmgYCP/Dw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">[JIRA] JIRA가 무엇일까?</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 우명규
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
