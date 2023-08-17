@@ -11,9 +11,16 @@
         <pubDate>Mon, 31 Jul 2023 00:00:00 +0000</pubDate>
         
         <guid>https://myeongcode.github.io/woo-myeong-gyu/</guid>
-        <description>&lt;h4 id=&#34;contact&#34;&gt;Contact&lt;/h4&gt;
+        <description>&lt;h2 id=&#34;information&#34;&gt;Information&lt;/h2&gt;
+&lt;h3 id=&#34;contact&#34;&gt;Contact&lt;/h3&gt;
 &lt;p&gt;Phone. 010&lt;/p&gt;
-&lt;h4 id=&#34;skill&#34;&gt;Skill&lt;/h4&gt;
+&lt;h3 id=&#34;skills&#34;&gt;Skills&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;React&lt;/li&gt;
+&lt;li&gt;Typesciprt&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;h2 id=&#34;project-experience&#34;&gt;Project Experience&lt;/h2&gt;
