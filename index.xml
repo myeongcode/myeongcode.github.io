@@ -6,7 +6,57 @@
         <description>Recent content on 우명규</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://myeongcode.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 01 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://myeongcode.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>[Baekjoon] 1152번 문제</title>
+        <link>https://myeongcode.github.io/p/baekjoon-1152%EB%B2%88-%EB%AC%B8%EC%A0%9C/</link>
+        <pubDate>Wed, 01 May 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://myeongcode.github.io/p/baekjoon-1152%EB%B2%88-%EB%AC%B8%EC%A0%9C/</guid>
+        <description>&lt;img src="https://myeongcode.github.io/p/baekjoon-1152%EB%B2%88-%EB%AC%B8%EC%A0%9C/baekjoon.png" alt="Featured image of post [Baekjoon] 1152번 문제" /&gt;&lt;h2 id=&#34;문제&#34;&gt;문제&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/myeongcode/myeongcode.github.io/assets/67165016/0d0f077c-5daf-463c-87c7-142d7e6e041d&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;풀이&#34;&gt;풀이&lt;/h2&gt;
+&lt;p&gt;주로 자바스크립트만으로 알고리즘 문제를 진행해보다가 이제는 파이썬으로 알고리즘 문제를 해결하려고 한다.&lt;/p&gt;
+&lt;p&gt;그렇기에 기초문제부터 차근차근 하면서 파이썬 문법과 사용법을 알아 갈 예정이다!&lt;/p&gt;
+&lt;p&gt;가볍게 1152번 문제를 풀어봤고, 어떤 입력을 받으면 그 입력의 단어들의 개수를 출력해주는 것이였다.
+자바스크립트에서의 &lt;code&gt;.slice()&lt;/code&gt;나 &lt;code&gt;.split()&lt;/code&gt;을 통해 단어들을 자르고 그 단어들의 개수를 출력해주면 되지 않을까 생각했고 파이썬에서도 단어들을 잘라주는 함수가 있는지 구글링을 한 결과 JS와 똑같이 &lt;code&gt;.split()&lt;/code&gt;함수가 존재했었다.&lt;/p&gt;
+&lt;p&gt;그래서 입력받은 값을 공백을 기준으로 split해주면 해당 단어들이 리스트(?)로 표시되는데 이 리스트들의 값만 출력해주면 돼서 쉽게 출 수 있었다.&lt;/p&gt;
+&lt;p&gt;참고로 파이썬에서 개수를 표시하는 방법은 &lt;code&gt;len()&lt;/code&gt;함수를 사용한다고 한다.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;inputData&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;len&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;inputData&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;split&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://github.com/myeongcode/myeongcode.github.io/assets/67165016/0093e56d-0f4b-40c9-a41f-4a83fbfe7439&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;해결완료 ✅&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+        </item>
+        <item>
         <title>2023년 회고 기록</title>
         <link>https://myeongcode.github.io/p/2023%EB%85%84-%ED%9A%8C%EA%B3%A0-%EA%B8%B0%EB%A1%9D/</link>
         <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
