@@ -6,7 +6,15 @@
         <description>Recent content in Tags on 우명규</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Tue, 14 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://myeongcode.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 15 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://myeongcode.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>computer science</title>
+        <link>https://myeongcode.github.io/tags/computer-science/</link>
+        <pubDate>Wed, 15 May 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://myeongcode.github.io/tags/computer-science/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>python</title>
         <link>https://myeongcode.github.io/tags/python/</link>
         <pubDate>Tue, 14 May 2024 00:00:00 +0000</pubDate>
